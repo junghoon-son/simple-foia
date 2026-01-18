@@ -166,6 +166,13 @@
       padding: 0;
     }
 
+    .form-hint {
+      font-size: 10px;
+      color: #64748b;
+      margin-top: 6px;
+      padding: 0 4px;
+    }
+
     /* Sidebar */
     .sidebar {
       position: fixed;
@@ -1628,13 +1635,13 @@
             </div>
             <div class="sticky-form">
               <div class="sticky-form-inner">
-                <input type="text" id="fullName" class="input-name" placeholder="Full Name">
-                <input type="email" id="email" class="input-email" placeholder="Email">
-                <input type="text" id="street" class="input-street" placeholder="Street Address">
+                <input type="text" id="fullName" class="input-name" placeholder="Full Name *" required>
+                <input type="email" id="email" class="input-email" placeholder="Email *" required>
+                <input type="text" id="street" class="input-street" placeholder="Address (optional)">
                 <input type="text" id="city" class="input-city" placeholder="City">
                 <input type="text" id="state" class="input-state" placeholder="ST" maxlength="2">
                 <input type="text" id="zip" class="input-zip" placeholder="ZIP">
-                <input type="tel" id="phone" class="input-phone" placeholder="Phone">
+                <input type="tel" id="phone" class="input-phone" placeholder="Phone (optional)">
                 <label class="checkbox-inline">
                   <input type="checkbox" id="isMedia">
                   Media
@@ -1644,6 +1651,7 @@
                   100% Private
                 </span>
               </div>
+              <div class="form-hint">* Required. Address optional — use P.O. Box if preferred. Phone never shared with agencies.</div>
             </div>
           </div>
 
