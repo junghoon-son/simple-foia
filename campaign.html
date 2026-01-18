@@ -638,6 +638,10 @@
 
       <div class="sidebar-divider"></div>
 
+      <div class="sidebar-search">
+        <input type="text" id="search" placeholder="Search campaigns..." autocomplete="off">
+      </div>
+
       <div class="sidebar-section">
         <div class="sidebar-section-label">Campaigns</div>
         <div class="campaign-list" id="campaign-list"></div>
@@ -651,6 +655,7 @@
       </div>
 
       <div class="sidebar-footer">
+        <div style="margin-bottom: 4px; color: #22c55e; font-size: 10px;">Static HTML · No server · 100% private</div>
         <div>No tracking · <a href="https://www.foia.gov/" target="_blank">About FOIA</a></div>
         <div style="margin-top: 6px; font-size: 10px;">
           By <strong>Jung Hoon Son, M.D.</strong><br>
@@ -1497,6 +1502,31 @@ ${getAddress(d)}`;
 
     document.addEventListener('click', e => {
       if (e.target.closest('.toc-item a')) closeSidebar();
+    });
+
+    // Search functionality
+    document.getElementById('search').addEventListener('input', e => {
+      const q = e.target.value.toLowerCase().trim();
+      const list = Object.values(allCampaigns);
+      if (!q) {
+        renderCampaignList();
+        return;
+      }
+      const filtered = list.filter(c => {
+        const searchable = [c.title, c.summary, ...(c.keywords || [])].join(' ').toLowerCase();
+        return searchable.includes(q);
+      });
+      const container = document.getElementById('campaign-list');
+      if (filtered.length === 0) {
+        container.innerHTML = '<div style="padding: 12px; color: var(--text-muted); font-size: 12px;">No campaigns found.</div>';
+        return;
+      }
+      container.innerHTML = filtered.map(c => `
+        <a href="campaign.html?id=${c.id}" class="campaign-item ${c.id === currentId ? 'active' : ''}">
+          <span class="campaign-item-dot"></span>
+          ${c.title}
+        </a>
+      `).join('');
     });
 
     loadCampaign();
