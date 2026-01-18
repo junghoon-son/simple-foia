@@ -317,12 +317,87 @@
       z-index: 99;
     }
 
+    /* Mobile cases */
+    .mobile-cases {
+      display: none;
+      margin-top: 24px;
+    }
+
+    .mobile-cases-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+
+    .mobile-case-card {
+      display: block;
+      padding: 14px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: inherit;
+      margin-bottom: 10px;
+      transition: all 0.15s;
+    }
+
+    .mobile-case-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .mobile-case-card:active {
+      transform: scale(0.98);
+    }
+
+    .mobile-case-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .mobile-case-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      flex-shrink: 0;
+    }
+
+    .mobile-case-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .mobile-case-summary {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .mobile-case-arrow {
+      float: right;
+      color: var(--text-muted);
+      font-size: 18px;
+      margin-top: -20px;
+    }
+
     @media (max-width: 700px) {
       .sidebar { transform: translateX(-100%); transition: transform 0.2s; }
       .sidebar.open { transform: translateX(0); }
       .main { margin-left: 0; padding: 68px 20px 32px; align-items: flex-start; }
       .mobile-header { display: flex; }
       .overlay.open { display: block; }
+      .mobile-cases { display: block; }
     }
   </style>
 </head>
@@ -403,6 +478,8 @@
           <svg fill="none" stroke="#22c55e" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
           <span><strong style="color: #22c55e;">100% Private:</strong> Everything runs in your browser. No servers, no tracking, no cookies, no analytics. Your data never leaves your device.</span>
         </div>
+
+        <div class="mobile-cases" id="mobile-cases"></div>
       </div>
     </main>
   </div>
@@ -438,6 +515,28 @@
 
     function loadCampaigns() {
       renderCampaigns(Object.values(campaigns));
+      renderMobileCases(Object.values(campaigns));
+    }
+
+    function renderMobileCases(list) {
+      const container = document.getElementById('mobile-cases');
+      if (!container) return;
+
+      list.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      container.innerHTML = `
+        <div class="mobile-cases-label">Active Cases</div>
+        ${list.map(c => `
+          <a href="campaign.html?id=${c.id}" class="mobile-case-card">
+            <div class="mobile-case-header">
+              <span class="mobile-case-dot"></span>
+              <span class="mobile-case-title">${c.title}</span>
+            </div>
+            <div class="mobile-case-summary">${c.summary}</div>
+            <span class="mobile-case-arrow">→</span>
+          </a>
+        `).join('')}
+      `;
     }
 
     function renderCampaigns(list) {
