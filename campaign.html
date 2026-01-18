@@ -1641,7 +1641,6 @@
                 <input type="text" id="city" class="input-city" placeholder="City">
                 <input type="text" id="state" class="input-state" placeholder="ST" maxlength="2">
                 <input type="text" id="zip" class="input-zip" placeholder="ZIP">
-                <input type="tel" id="phone" class="input-phone" placeholder="Phone (optional)">
                 <label class="checkbox-inline">
                   <input type="checkbox" id="isMedia">
                   Media
@@ -1651,7 +1650,7 @@
                   100% Private
                 </span>
               </div>
-              <div class="form-hint">* Required. Address optional — use P.O. Box if preferred. Phone never shared with agencies.</div>
+              <div class="form-hint">* Required. Address optional — use a P.O. Box if preferred.</div>
             </div>
           </div>
 
@@ -1802,7 +1801,7 @@
       document.getElementById('main').innerHTML = html;
 
       // Load saved form data from localStorage
-      const formFields = ['fullName', 'street', 'city', 'state', 'zip', 'email', 'phone'];
+      const formFields = ['fullName', 'street', 'city', 'state', 'zip', 'email'];
       formFields.forEach(f => {
         const el = document.getElementById(f);
         const saved = localStorage.getItem('foia_' + f);
@@ -1838,13 +1837,12 @@
         state: document.getElementById('state')?.value || '[ST]',
         zip: document.getElementById('zip')?.value || '[ZIP]',
         email: document.getElementById('email')?.value || '[EMAIL]',
-        phone: document.getElementById('phone')?.value || '',
         isMedia: document.getElementById('isMedia')?.checked || false
       };
     }
 
     function getAddress(d) {
-      return `${d.name}\n${d.street}\n${d.city}, ${d.state} ${d.zip}\n${d.email}${d.phone ? '\n' + d.phone : ''}`;
+      return `${d.name}\n${d.street}\n${d.city}, ${d.state} ${d.zip}\n${d.email}`;
     }
 
     function getDate() {
@@ -1860,7 +1858,7 @@
       return `${d.name}
 ${d.street}
 ${d.city}, ${d.state} ${d.zip}
-${d.email}${d.phone ? '\nPhone: ' + d.phone : ''}
+${d.email}
 
 ${getDate()}
 
@@ -1907,7 +1905,7 @@ ${d.name}`;
       return `${d.name}
 ${d.street}
 ${d.city}, ${d.state} ${d.zip}
-${d.email}${d.phone ? '\nPhone: ' + d.phone : ''}
+${d.email}
 
 ${getDate()}
 
@@ -1959,7 +1957,7 @@ ${d.name}`;
       return `${d.name}
 ${d.street}
 ${d.city}, ${d.state} ${d.zip}
-${d.email}${d.phone ? '\nPhone: ' + d.phone : ''}
+${d.email}
 
 ${getDate()}
 
