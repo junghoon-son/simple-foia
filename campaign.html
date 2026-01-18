@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOIA Generator</title>
+  <!-- NO EXTERNAL REQUESTS: Using system fonts only. No analytics, no tracking, no data collection. -->
+  <style>
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --text: #0f0f0f;
+      --text-secondary: #71717a;
+      --text-muted: #a1a1aa;
+      --border: #e4e4e7;
+      --border-subtle: #f4f4f5;
+      --accent: #18181b;
+      --accent-hover: #27272a;
+      --ring: rgba(0,0,0,0.05);
+      --success: #22c55e;
+      --blue: #2563eb;
+      --blue-hover: #1d4ed8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .layout { display: flex; min-height: 100vh; }
+
+    /* Sticky form header */
+    .sticky-form {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      margin: -32px -40px 24px -40px;
+    }
+
+    .privacy-banner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 6px;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .privacy-banner svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      color: #22c55e;
+    }
+
+    .privacy-banner strong {
+      color: #22c55e;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 256px;
+      height: 100vh;
+      border-right: 1px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+    }
+
+    .sidebar-header {
+      padding: 16px 16px 12px;
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .sidebar-logo-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sidebar-logo-icon svg {
+      width: 16px;
+      height: 16px;
+      color: white;
+    }
+
+    .sidebar-logo-text {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+
+    .sidebar-section {
+      padding: 8px 12px;
+    }
+
+    .sidebar-section-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 8px 8px 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 4px 16px;
+    }
+
+    .campaign-list {
+      max-height: 160px;
+      overflow-y: auto;
+    }
+
+    .campaign-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 10px;
+      margin: 1px 0;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 13px;
+      transition: all 0.1s;
+    }
+
+    .campaign-item:hover {
+      background: var(--border-subtle);
+      color: var(--text);
+    }
+
+    .campaign-item.active {
+      background: var(--border-subtle);
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .campaign-item-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .campaign-item.active .campaign-item-dot {
+      background: var(--success);
+    }
+
+    .toc-section { padding: 8px 12px; flex: 1; overflow-y: auto; }
+
+    .toc { list-style: none; }
+
+    .toc-group { margin-bottom: 8px; }
+
+    .toc-group-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 6px 8px 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .toc-items { list-style: none; }
+
+    .toc-item a {
+      display: block;
+      padding: 5px 8px 5px 20px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.1s;
+      border-left: 2px solid transparent;
+      margin-left: 8px;
+    }
+
+    .toc-item a:hover {
+      color: var(--text);
+      background: var(--border-subtle);
+    }
+
+    .toc-item.active a {
+      color: var(--text);
+      border-left-color: var(--accent);
+      background: var(--border-subtle);
+    }
+
+    .sidebar-footer {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .sidebar-footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .sidebar-footer a:hover { text-decoration: underline; }
+
+    /* Main */
+    .main {
+      flex: 1;
+      margin-left: 256px;
+    }
+
+    section {
+      padding: 32px 40px;
+      scroll-margin-top: 20px;
+      max-width: 720px;
+    }
+
+    section:nth-child(even) {
+      background: var(--surface);
+    }
+
+    section:nth-child(odd) {
+      background: var(--bg);
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      margin-bottom: 4px;
+    }
+
+    .description {
+      color: var(--text-secondary);
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .description a {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .card + .card { margin-top: 12px; }
+
+    .card-body { padding: 12px 14px; }
+
+    .card-footer {
+      padding: 10px 14px;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Compact Form */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .form-group.col-2 { grid-column: span 2; }
+    .form-group.col-3 { grid-column: span 3; }
+    .form-group.col-4 { grid-column: span 4; }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .form-group input {
+      padding: 6px 10px;
+      font-size: 13px;
+      font-family: inherit;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--ring);
+    }
+
+    .form-group input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-top: 4px;
+    }
+
+    .checkbox-row input {
+      width: 14px;
+      height: 14px;
+      accent-color: var(--accent);
+    }
+
+    .checkbox-row label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+
+    /* Template */
+    .template-content {
+      font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, monospace;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      white-space: pre-wrap;
+      max-height: 200px;
+      overflow-y: auto;
+      padding: 12px 14px;
+      background: var(--bg);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: inherit;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.1s;
+      text-decoration: none;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-primary.copied { background: var(--success); }
+
+    .btn-secondary {
+      background: var(--blue);
+      color: white;
+    }
+
+    .btn-secondary:hover { background: var(--blue-hover); }
+
+    .btn svg { width: 12px; height: 12px; }
+
+    .link {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+
+    .link a {
+      color: var(--text-secondary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* Notice */
+    .notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .notice svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px; }
+
+    .notice-info {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .notice-warning {
+      background: #fefce8;
+      color: #854d0e;
+      border: 1px solid #fef08a;
+    }
+
+    /* Mobile */
+    .mobile-header {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 48px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 12px;
+      align-items: center;
+      z-index: 200;
+    }
+
+    .mobile-header h1 { font-size: 14px; font-weight: 600; }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      padding: 6px;
+      cursor: pointer;
+      margin-left: auto;
+      color: var(--text-secondary);
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 99;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar { transform: translateX(-100%); transition: transform 0.2s; }
+      .sidebar.open { transform: translateX(0); }
+      .main { margin-left: 0; padding: 60px 16px 24px; }
+      .mobile-header { display: flex; }
+      .form-grid { grid-template-columns: 1fr 1fr; }
+      .form-group.col-3, .form-group.col-4 { grid-column: span 2; }
+      .card-footer { flex-direction: column; align-items: stretch; }
+      .link { margin-left: 0; text-align: center; margin-top: 4px; }
+      .overlay.open { display: block; }
+    }
+
+    footer {
+      padding: 24px 40px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-muted);
+      background: var(--surface);
+    }
+
+    footer a { color: var(--text-secondary); }
+
+    /* Adjust cards in odd sections */
+    section:nth-child(odd) .card {
+      background: var(--surface);
+    }
+
+    section:nth-child(even) .card {
+      background: var(--bg);
+      border-color: var(--border-subtle);
+    }
+
+    section:nth-child(even) .card-footer {
+      background: var(--border-subtle);
+    }
+
+    section:nth-child(even) .template-content {
+      background: var(--border-subtle);
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay" onclick="closeSidebar()"></div>
+
+  <div class="mobile-header">
+    <h1 id="mobile-title">FOIA Generator</h1>
+    <button class="menu-btn" onclick="toggleSidebar()">
+      <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-logo">
+          <div class="sidebar-logo-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <span class="sidebar-logo-text">FOIA Generator</span>
+        </a>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Campaigns</div>
+        <div class="campaign-list" id="campaign-list"></div>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="toc-section" id="toc-section" style="display:none;">
+        <div class="sidebar-section-label" id="toc-label">Navigation</div>
+        <ul class="toc" id="toc"></ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <div>No tracking · <a href="https://www.foia.gov/" target="_blank">About FOIA</a></div>
+        <div style="margin-top: 6px; font-size: 10px;">
+          By <strong>Jung Hoon Son, M.D.</strong><br>
+          <a href="https://www.linkedin.com/in/jung-hoon-son/" target="_blank">LinkedIn</a> ·
+          <a href="https://www.threads.com/@drjunghoon" target="_blank">Threads</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main" id="main">
+      <div class="notice notice-info">Loading campaign...</div>
+    </main>
+  </div>
+
+  <script>
+    // Embedded campaigns data
+    const allCampaigns = {
+      "renee-good": {
+        "id": "renee-good",
+        "title": "Renee Good Case",
+        "date": "2026-01-17",
+        "status": "active",
+        "summary": "U.S. citizen and mother of three shot by ICE agent in Minneapolis. Video contradicts official claims. Federal authorities blocking state investigation.",
+        "keywords": ["ice", "minneapolis", "shooting", "obstruction", "citizen", "jonathan ross", "video"],
+        "agencies": {
+          "fbi": {
+            "name": "FBI",
+            "fullName": "Federal Bureau of Investigation",
+            "description": "Leading investigation; blocking state access to evidence.",
+            "email": "foiparequest@fbi.gov",
+            "portal": "https://vault.fbi.gov/fdps-1/foia-request",
+            "address": "Federal Bureau of Investigation\nAttn: FOIA/PA Request\nRecord/Information Dissemination Section\n170 Marcel Drive\nWinchester, VA 22602",
+            "requests": [
+              "All records related to the fatal shooting of Renee Nicole Good, a U.S. citizen, by ICE Agent Jonathan Ross on January 7, 2026, in Minneapolis, Minnesota.",
+              "All video footage collected, including Agent Ross's cellphone video, bystander videos, and any surveillance footage.",
+              "All communications between FBI and Minnesota BCA, Hennepin County Attorney, and Minnesota AG regarding investigation access and jurisdiction.",
+              "All records related to the decision to exclude Minnesota authorities from joint investigation.",
+              "All evidence collected: the ICE agent's firearm, ammunition casings, Renee Good's vehicle, forensic reports, and autopsy reports.",
+              "All witness statements and investigative interviews conducted."
+            ]
+          },
+          "dhs": {
+            "name": "DHS",
+            "fullName": "Department of Homeland Security",
+            "description": "Secretary Noem made false public statements; blocking state investigation.",
+            "email": "foia@hq.dhs.gov",
+            "portal": "https://www.dhs.gov/foia",
+            "address": "Department of Homeland Security\nPrivacy Office, Mail Stop 0655\n2707 Martin Luther King Jr. Ave. SE\nWashington, D.C. 20528-0655",
+            "requests": [
+              "All records related to the ICE enforcement operation on January 7, 2026, in Minneapolis, during which Renee Nicole Good was killed.",
+              "All records related to DHS Secretary Kristi Noem's public statements characterizing Good as engaged in 'domestic terrorism.'",
+              "All communications between DHS leadership and White House regarding this incident and public messaging.",
+              "All video footage in DHS possession, including Agent Ross's cellphone video.",
+              "All communications between DHS, ICE, FBI, and DOJ regarding federal jurisdiction and exclusion of Minnesota BCA.",
+              "All records related to ICE Agent Jonathan Ross: employment records, training, prior complaints, and current duty status."
+            ]
+          },
+          "ice": {
+            "name": "ICE",
+            "fullName": "Immigration and Customs Enforcement",
+            "description": "Agent Jonathan Ross records, use-of-force history, cellphone video.",
+            "email": "ice-foia@ice.dhs.gov",
+            "portal": "https://www.ice.gov/foia",
+            "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
+            "requests": [
+              "All records related to ICE Agent Jonathan Ross: complete personnel file, employment history (Border Patrol 2007-2015, ICE 2015-present), training records, firearms instructor certifications.",
+              "All prior use-of-force incidents, complaints, and disciplinary actions involving Agent Ross.",
+              "Agent Ross's cellphone video recorded during the January 7, 2026 shooting.",
+              "All body-worn camera and dashcam footage from all ICE agents present at the scene.",
+              "All records related to the January 7, 2026 Minneapolis operation: planning documents, target lists, after-action reports.",
+              "Current duty status and location of Agent Ross following this incident."
+            ]
+          },
+          "doj": {
+            "name": "DOJ",
+            "fullName": "Department of Justice",
+            "description": "U.S. Attorney reversed joint investigation; jurisdiction decisions.",
+            "email": "MRUFOIA.Requests@usdoj.gov",
+            "portal": "https://www.justice.gov/oip/submit-and-track-request-or-appeal",
+            "address": "Department of Justice\nOffice of Information Policy\n6th Floor, 441 G Street, NW\nWashington, D.C. 20530",
+            "requests": [
+              "All records related to the U.S. Attorney's Office decision to reverse the joint investigation agreement with Minnesota BCA.",
+              "All communications between DOJ, U.S. Attorney's Office, FBI, DHS, and ICE regarding federal jurisdiction over this case.",
+              "All communications between DOJ and Minnesota officials (BCA, AG Keith Ellison, Hennepin County Attorney Mary Moriarty, Governor Walz).",
+              "All records related to any civil rights review of this shooting.",
+              "All legal memoranda regarding federal jurisdiction and immunity claims for ICE agents in officer-involved shootings."
+            ]
+          }
+        },
+        "complaints": {
+          "dhs-oig": {
+            "name": "DHS Inspector General",
+            "description": "Report false statements by Secretary Noem, excessive force, and obstruction.",
+            "email": "DHS-OIG.OfficePublicAffairs@oig.dhs.gov",
+            "portal": "https://www.oig.dhs.gov/hotline",
+            "address": "Department of Homeland Security\nOffice of Inspector General\n245 Murray Lane SW\nWashington, D.C. 20528",
+            "subject": "Complaint: False Statements, Excessive Force, and Obstruction - Renee Good Shooting",
+            "allegations": [
+              "UNJUSTIFIED USE OF DEADLY FORCE: ICE Agent Jonathan Ross shot Renee Nicole Good, a U.S. citizen, three times. Multiple videos show she posed no threat—Ross was standing out of her vehicle's path when he fired. She had smiled and said 'I'm not mad at you' moments before being killed.",
+              "FALSE PUBLIC STATEMENTS: DHS Secretary Kristi Noem falsely characterized Good as engaged in 'domestic terrorism' and claimed the agent acted in self-defense. Video evidence directly contradicts this—Minneapolis Mayor Frey called it 'bullshit.'",
+              "OBSTRUCTION OF JUSTICE: Federal authorities reversed an agreement with Minnesota BCA for joint investigation, seized all evidence, and are blocking state investigators from accessing case materials.",
+              "EVIDENCE SUPPRESSION: Agent Ross's cellphone video, his firearm, ammunition casings, and Good's vehicle are being withheld from state authorities."
+            ],
+            "actions": [
+              "Investigate Agent Jonathan Ross's use of deadly force",
+              "Investigate Secretary Noem's false public statements",
+              "Investigate the decision to block state investigators",
+              "Preserve all video footage, including Agent Ross's cellphone video",
+              "Refer criminal conduct to appropriate authorities"
+            ]
+          },
+          "doj-oig": {
+            "name": "DOJ Inspector General",
+            "description": "Report obstruction of state investigation and abuse of federal jurisdiction.",
+            "email": "oig.hotline@usdoj.gov",
+            "portal": "https://oig.justice.gov/hotline",
+            "address": "Department of Justice\nOffice of the Inspector General\n950 Pennsylvania Avenue, NW\nSuite 4706\nWashington, D.C. 20530",
+            "subject": "Complaint: Obstruction of Justice and Abuse of Federal Jurisdiction - Renee Good Case",
+            "allegations": [
+              "OBSTRUCTION OF STATE INVESTIGATION: U.S. Attorney's Office reversed agreement for joint FBI-BCA investigation, seizing exclusive jurisdiction and blocking Minnesota officials from all evidence access.",
+              "IMPROPER IMMUNITY CLAIMS: Vice President Vance claimed federal agents have immunity from state prosecution. Minnesota AG Keith Ellison called this a 'misstatement of the law.'",
+              "COORDINATION TO OBSTRUCT: Communications between DOJ, DHS, FBI, ICE, and White House may reveal improper coordination to prevent state investigation.",
+              "CIVIL RIGHTS VIOLATIONS: A U.S. citizen was killed by a federal agent, and federal authorities are preventing independent investigation."
+            ],
+            "actions": [
+              "Investigate DOJ's role in blocking state investigation",
+              "Investigate the legal basis for immunity claims",
+              "Investigate inter-agency communications regarding jurisdiction",
+              "Preserve all records and evidence",
+              "Refer criminal conduct to appropriate authorities"
+            ]
+          }
+        },
+        "congress": {
+          "subject": "Request for Congressional Oversight - Killing of Renee Good by ICE Agent",
+          "background": [
+            "Renee Nicole Good, 37-year-old U.S. citizen, poet, and mother of three, was shot and killed by ICE Agent Jonathan Ross in Minneapolis on January 7, 2026, after dropping her 6-year-old son at school.",
+            "Multiple videos show Good posed no threat. She smiled and said 'I'm not mad at you' moments before Ross fired three shots. Video shows Ross was standing out of her vehicle's path when he opened fire.",
+            "DHS Secretary Kristi Noem called Good's actions 'domestic terrorism.' Minneapolis Mayor Frey called that claim 'bullshit.' Governor Walz proclaimed January 9 'Renee Good Day.'",
+            "Federal authorities initially agreed to joint FBI-BCA investigation, then U.S. Attorney's Office 'reversed course' and seized exclusive jurisdiction.",
+            "Minnesota BCA has been blocked from all evidence: Agent Ross's firearm, cellphone video, ammunition casings, and Good's vehicle.",
+            "Rep. Robin Kelly (IL) filed articles of impeachment against DHS Secretary Noem on January 14, 2026."
+          ],
+          "concerns": [
+            "A U.S. citizen was killed by a federal agent while posing no apparent threat",
+            "Video evidence contradicts official government statements",
+            "Federal government is actively blocking state investigation with lawful jurisdiction",
+            "Evidence at risk of suppression or destruction",
+            "High-level officials making false public statements about the incident"
+          ],
+          "actions": [
+            "Enter this matter into the Congressional Record",
+            "Initiate oversight hearings on the killing and federal obstruction",
+            "Subpoena all video footage, including Agent Ross's cellphone video",
+            "Request records from DHS, DOJ, FBI, and ICE",
+            "Investigate DHS Secretary Noem's public statements",
+            "Consider legislation requiring state access to evidence in federal agent shootings"
+          ]
+        }
+      },
+      "geraldo-lunas-campos": {
+        "id": "geraldo-lunas-campos",
+        "title": "Geraldo Lunas Campos Case",
+        "date": "2026-01-16",
+        "status": "active",
+        "summary": "Cuban immigrant died in ICE detention. Medical examiner: asphyxia from neck/chest compression. DHS claims suicide attempt.",
+        "keywords": ["ice", "detention", "texas", "el paso", "fort bliss", "homicide", "asphyxia"],
+        "agencies": {
+          "dhs": {
+            "name": "DHS",
+            "fullName": "Department of Homeland Security",
+            "description": "Facility oversight, contractor management, and incident records.",
+            "email": "foia@hq.dhs.gov",
+            "portal": "https://www.dhs.gov/foia",
+            "address": "Department of Homeland Security\nPrivacy Office, Mail Stop 0655\n2707 Martin Luther King Jr. Ave. SE\nWashington, D.C. 20528-0655",
+            "requests": [
+              "All records related to the death of Geraldo Lunas Campos on January 3, 2026, at Camp East Montana, Fort Bliss, El Paso, Texas.",
+              "All incident reports, use-of-force reports, and after-action reports related to this death.",
+              "All video footage, audio recordings, and body camera footage from the incident.",
+              "All records related to Camp East Montana facility: contracts, oversight reports, inspection records, and complaints.",
+              "All records related to Acquisition Logistics LLC, the contractor operating Camp East Montana.",
+              "All communications between DHS, ICE, and the contractor regarding this death.",
+              "All records related to witness statements from detainees, including Santos Jesus Flores.",
+              "All records related to the deportation or transfer of witnesses to this death."
+            ]
+          },
+          "ice": {
+            "name": "ICE",
+            "fullName": "Immigration and Customs Enforcement",
+            "description": "Detention records, guard conduct, and use-of-force reports.",
+            "email": "ice-foia@ice.dhs.gov",
+            "portal": "https://www.ice.gov/foia",
+            "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
+            "requests": [
+              "All records related to the death of Geraldo Lunas Campos at Camp East Montana on January 3, 2026.",
+              "All records identifying guards and staff involved in the incident, including employment records, training, prior complaints, and use-of-force history.",
+              "All medical records, incident reports, and internal communications regarding this death.",
+              "All policies governing use of force in detention facilities, particularly regarding restraint techniques.",
+              "All records related to deaths at Camp East Montana and other Fort Bliss detention facilities.",
+              "All records related to the detention and transfer of Santos Jesus Flores and other witnesses.",
+              "All records related to Geraldo Lunas Campos's detention: intake records, medical history, segregation placement, and incident history."
+            ]
+          },
+          "fbi": {
+            "name": "FBI",
+            "fullName": "Federal Bureau of Investigation",
+            "description": "FBI investigation into the death.",
+            "email": "foiparequest@fbi.gov",
+            "portal": "https://vault.fbi.gov/fdps-1/foia-request",
+            "address": "Federal Bureau of Investigation\nAttn: FOIA/PA Request\nRecord/Information Dissemination Section\n170 Marcel Drive\nWinchester, VA 22602",
+            "requests": [
+              "All records related to any FBI investigation into the death of Geraldo Lunas Campos on January 3, 2026.",
+              "All communications between FBI, DHS, ICE, and other agencies regarding this death.",
+              "All witness statements, evidence collected, and investigative findings.",
+              "All records related to potential civil rights violations in this case."
+            ]
+          },
+          "doj": {
+            "name": "DOJ",
+            "fullName": "Department of Justice",
+            "description": "Civil rights review and detention oversight.",
+            "email": "MRUFOIA.Requests@usdoj.gov",
+            "portal": "https://www.justice.gov/oip/submit-and-track-request-or-appeal",
+            "address": "Department of Justice\nOffice of Information Policy\n6th Floor, 441 G Street, NW\nWashington, D.C. 20530",
+            "requests": [
+              "All records related to DOJ involvement in investigating the death of Geraldo Lunas Campos.",
+              "All records related to civil rights review of deaths in ICE detention facilities.",
+              "All communications between DOJ, DHS, ICE, and FBI regarding this case.",
+              "All records related to DOJ oversight of detention facility contractors."
+            ]
+          }
+        },
+        "complaints": {
+          "dhs-oig": {
+            "name": "DHS Inspector General",
+            "description": "Report misconduct, false statements, and potential cover-up.",
+            "email": "DHS-OIG.OfficePublicAffairs@oig.dhs.gov",
+            "portal": "https://www.oig.dhs.gov/hotline",
+            "address": "Department of Homeland Security\nOffice of Inspector General\n245 Murray Lane SW\nWashington, D.C. 20528",
+            "subject": "Complaint: Death of Geraldo Lunas Campos - Potential Homicide and Cover-Up",
+            "allegations": [
+              "EXCESSIVE USE OF FORCE: Detainee Geraldo Lunas Campos died from asphyxia due to neck and chest compression. Witness reports guards pinned and choked him while he said he could not breathe.",
+              "FALSE OFFICIAL STATEMENTS: DHS claimed the death resulted from a suicide attempt, contradicted by medical examiner findings of asphyxia from compression.",
+              "WITNESS INTIMIDATION: Reports indicate DHS has moved to deport witnesses to the death, potentially obstructing investigation.",
+              "CONTRACTOR NEGLIGENCE: Camp East Montana is operated by Acquisition Logistics LLC, a company with no prior corrections experience, raising serious oversight concerns.",
+              "SYSTEMIC FAILURES: Four immigrants died in ICE custody in the first 10 days of 2026, suggesting systemic problems."
+            ],
+            "actions": [
+              "Investigate the death of Geraldo Lunas Campos",
+              "Investigate false statements by DHS officials",
+              "Investigate witness deportation as potential obstruction",
+              "Investigate contractor oversight at Camp East Montana",
+              "Preserve all evidence, video footage, and records",
+              "Refer criminal conduct to appropriate authorities"
+            ]
+          },
+          "doj-oig": {
+            "name": "DOJ Inspector General",
+            "description": "Report civil rights violations and obstruction of justice.",
+            "email": "oig.hotline@usdoj.gov",
+            "portal": "https://oig.justice.gov/hotline",
+            "address": "Department of Justice\nOffice of the Inspector General\n950 Pennsylvania Avenue, NW\nSuite 4706\nWashington, D.C. 20530",
+            "subject": "Complaint: Civil Rights Violations and Obstruction - Geraldo Lunas Campos Death",
+            "allegations": [
+              "CIVIL RIGHTS VIOLATIONS: Death from asphyxia due to neck and chest compression while in federal custody constitutes potential civil rights violations.",
+              "OBSTRUCTION OF JUSTICE: Deportation of witnesses may constitute obstruction of the FBI investigation.",
+              "FALSE STATEMENTS: Discrepancy between DHS's suicide claim and medical examiner's homicide determination.",
+              "INADEQUATE OVERSIGHT: DOJ failure to properly oversee detention contractors operating facilities with no corrections experience."
+            ],
+            "actions": [
+              "Investigate civil rights violations",
+              "Investigate obstruction through witness deportation",
+              "Investigate DOJ oversight of ICE detention facilities",
+              "Preserve all records",
+              "Refer criminal conduct to authorities"
+            ]
+          }
+        },
+        "congress": {
+          "subject": "Request for Congressional Oversight - Geraldo Lunas Campos Death in ICE Custody",
+          "background": [
+            "Geraldo Lunas Campos, 55-year-old Cuban immigrant, died on January 3, 2026, at Camp East Montana, a tent detention facility at Fort Bliss.",
+            "El Paso County medical examiner found cause of death was asphyxia due to neck and chest compression, expected to rule it a homicide.",
+            "DHS claims he died during a suicide attempt, contradicting medical findings.",
+            "Witness Santos Jesus Flores reports seeing guards restrain Lunas Campos and hearing him say he could not breathe.",
+            "Camp East Montana is operated by Acquisition Logistics LLC, a company with no prior corrections experience.",
+            "Reports indicate DHS is deporting witnesses to the death."
+          ],
+          "concerns": [
+            "A man died from asphyxiation while in federal custody",
+            "Official statements contradict medical examiner findings",
+            "Witnesses are reportedly being deported, potentially obstructing investigation",
+            "Inexperienced contractor operating $1.2 billion detention facility",
+            "Four deaths in ICE custody in first 10 days of 2026"
+          ],
+          "actions": [
+            "Enter this matter into the Congressional Record",
+            "Initiate oversight hearings on ICE detention facility deaths",
+            "Investigate contractor qualifications and oversight",
+            "Request records from DHS, DOJ, FBI, and ICE",
+            "Halt deportation of witnesses pending investigation",
+            "Consider legislation requiring independent oversight of detention facilities"
+          ]
+        }
+      },
+      "keith-porter": {
+        "id": "keith-porter",
+        "title": "Keith Porter Case",
+        "date": "2026-01-13",
+        "status": "active",
+        "summary": "Black father killed by off-duty ICE agent in LA on New Year's Eve. No bodycam, no witnesses confirm agent's account.",
+        "keywords": ["ice", "los angeles", "shooting", "off-duty", "northridge", "lapd"],
+        "agencies": {
+          "dhs": {
+            "name": "DHS",
+            "fullName": "Department of Homeland Security",
+            "description": "Agent records, policies, and internal investigation.",
+            "email": "foia@hq.dhs.gov",
+            "portal": "https://www.dhs.gov/foia",
+            "address": "Department of Homeland Security\nPrivacy Office, Mail Stop 0655\n2707 Martin Luther King Jr. Ave. SE\nWashington, D.C. 20528-0655",
+            "requests": [
+              "All records related to the shooting death of Keith Porter Jr. on December 31, 2025, in Northridge, Los Angeles, by an off-duty ICE agent.",
+              "All records related to the ICE agent involved, including employment records, training, prior complaints, disciplinary actions, and use-of-force history.",
+              "All policies governing off-duty conduct of ICE agents, including use of service weapons.",
+              "All communications between DHS, ICE, and LAPD regarding this incident.",
+              "All records from ICE's Office of Professional Responsibility investigation.",
+              "All public statements made by DHS officials regarding this incident."
+            ]
+          },
+          "ice": {
+            "name": "ICE",
+            "fullName": "Immigration and Customs Enforcement",
+            "description": "Agent records, training, and internal investigation.",
+            "email": "ice-foia@ice.dhs.gov",
+            "portal": "https://www.ice.gov/foia",
+            "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
+            "requests": [
+              "All records related to the ICE agent involved in the shooting death of Keith Porter Jr. on December 31, 2025.",
+              "All employment records, personnel files, training records, prior complaints, and use-of-force history for this agent.",
+              "All records from the Office of Professional Responsibility investigation into this shooting.",
+              "All policies governing off-duty use of ICE-authorized firearms.",
+              "All policies governing ICE agent response to non-immigration-related incidents.",
+              "All records of the agent's current duty status following this incident."
+            ]
+          },
+          "doj": {
+            "name": "DOJ",
+            "fullName": "Department of Justice",
+            "description": "Civil rights review and federal law enforcement oversight.",
+            "email": "MRUFOIA.Requests@usdoj.gov",
+            "portal": "https://www.justice.gov/oip/submit-and-track-request-or-appeal",
+            "address": "Department of Justice\nOffice of Information Policy\n6th Floor, 441 G Street, NW\nWashington, D.C. 20530",
+            "requests": [
+              "All records related to DOJ involvement in the investigation of Keith Porter Jr.'s death.",
+              "All records related to civil rights review of this shooting.",
+              "All communications between DOJ, DHS, ICE, and local authorities regarding this case.",
+              "All records related to DOJ policies on investigating off-duty federal law enforcement shootings."
+            ]
+          }
+        },
+        "complaints": {
+          "dhs-oig": {
+            "name": "DHS Inspector General",
+            "description": "Report misconduct by off-duty ICE agent.",
+            "email": "DHS-OIG.OfficePublicAffairs@oig.dhs.gov",
+            "portal": "https://www.oig.dhs.gov/hotline",
+            "address": "Department of Homeland Security\nOffice of Inspector General\n245 Murray Lane SW\nWashington, D.C. 20528",
+            "subject": "Complaint: Off-Duty ICE Agent Shooting of Keith Porter Jr.",
+            "allegations": [
+              "UNJUSTIFIED USE OF DEADLY FORCE: Off-duty ICE agent shot and killed Keith Porter Jr. There is no bodycam footage, video evidence, or witness corroboration of the agent's claim that Porter pointed a weapon at him.",
+              "FAILURE TO FOLLOW PROPER PROCEDURES: Rather than calling 911 and waiting for trained LAPD officers, the agent left his apartment with his service weapon to confront the situation.",
+              "LACK OF ACCOUNTABILITY: Despite killing a man, the agent has not been arrested or charged.",
+              "TRANSPARENCY CONCERNS: The agent's identity was not publicly released by DHS, only revealed through unrelated court documents."
+            ],
+            "actions": [
+              "Investigate the shooting of Keith Porter Jr.",
+              "Investigate whether the agent's use of force was justified",
+              "Investigate why the agent confronted Porter rather than calling police",
+              "Review policies on off-duty conduct and firearm use",
+              "Preserve all evidence and records",
+              "Refer findings to appropriate authorities"
+            ]
+          },
+          "doj-oig": {
+            "name": "DOJ Inspector General",
+            "description": "Report civil rights violations and inadequate oversight.",
+            "email": "oig.hotline@usdoj.gov",
+            "portal": "https://oig.justice.gov/hotline",
+            "address": "Department of Justice\nOffice of the Inspector General\n950 Pennsylvania Avenue, NW\nSuite 4706\nWashington, D.C. 20530",
+            "subject": "Complaint: Civil Rights Concerns - Keith Porter Jr. Shooting",
+            "allegations": [
+              "POTENTIAL CIVIL RIGHTS VIOLATIONS: A Black man was killed by a federal agent with no independent evidence supporting the agent's account.",
+              "INADEQUATE OVERSIGHT: DOJ has failed to ensure accountability for off-duty federal agents who use deadly force.",
+              "LACK OF TRANSPARENCY: Federal agencies have not released information about the agent or investigation status."
+            ],
+            "actions": [
+              "Investigate civil rights implications of this shooting",
+              "Investigate DOJ oversight of off-duty federal law enforcement conduct",
+              "Ensure independent review of the shooting",
+              "Preserve all records"
+            ]
+          }
+        },
+        "congress": {
+          "subject": "Request for Congressional Oversight - Keith Porter Jr. Shooting",
+          "background": [
+            "Keith Porter Jr., 43-year-old Black father, was shot and killed on New Year's Eve (December 31, 2025) by an off-duty ICE agent at an apartment complex in Northridge, Los Angeles.",
+            "The ICE agent claims Porter pointed an AR-15 at him after celebratory gunfire.",
+            "There is no bodycam footage, video evidence, or witnesses to confirm the agent's account.",
+            "Neighbors report they did not hear the agent identify himself before shooting.",
+            "The agent has not been arrested or charged. His identity was only revealed through unrelated court documents.",
+            "Family and advocates are demanding transparency and accountability."
+          ],
+          "concerns": [
+            "A Black man was killed by a federal agent with no corroborating evidence",
+            "Off-duty agent chose to confront rather than call police",
+            "No bodycam footage exists of the incident",
+            "Agent has not been arrested or publicly identified by DHS",
+            "Pattern of ICE agents using deadly force without accountability"
+          ],
+          "actions": [
+            "Enter this matter into the Congressional Record",
+            "Initiate oversight hearings on off-duty federal agent conduct",
+            "Request records from DHS, ICE, and DOJ",
+            "Investigate policies on off-duty use of force",
+            "Consider legislation requiring bodycams for federal agents",
+            "Ensure independent investigation of this shooting"
+          ]
+        }
+      }
+    };
+
+    let campaign = null;
+    let currentId = null;
+
+    function loadCampaign() {
+      const params = new URLSearchParams(window.location.search);
+      currentId = params.get('id');
+
+      renderCampaignList();
+
+      if (!currentId) {
+        document.getElementById('main').innerHTML = '<div class="notice notice-warning">Select a campaign from the sidebar.</div>';
+        return;
+      }
+
+      campaign = allCampaigns[currentId];
+      if (!campaign) {
+        document.getElementById('main').innerHTML = '<div class="notice notice-warning">Campaign not found.</div>';
+        return;
+      }
+
+      document.title = `${campaign.title} - FOIA Generator`;
+      document.getElementById('mobile-title').textContent = campaign.title;
+      document.getElementById('toc-label').textContent = campaign.title;
+      document.getElementById('toc-section').style.display = 'block';
+
+      renderTOC();
+      renderMain();
+      initScrollSync();
+    }
+
+    function renderCampaignList() {
+      const list = Object.values(allCampaigns).sort((a, b) => new Date(b.date) - new Date(a.date));
+      document.getElementById('campaign-list').innerHTML = list.map(c => `
+        <a href="campaign.html?id=${c.id}" class="campaign-item ${c.id === currentId ? 'active' : ''}">
+          <span class="campaign-item-dot"></span>
+          ${c.title}
+        </a>
+      `).join('');
+    }
+
+    function renderTOC() {
+      let html = `
+        <li class="toc-group">
+          <div class="toc-group-label">Setup</div>
+          <ul class="toc-items">
+            <li class="toc-item" data-section="info"><a href="#info">Your Information</a></li>
+          </ul>
+        </li>
+      `;
+
+      if (campaign.agencies && Object.keys(campaign.agencies).length) {
+        html += `
+          <li class="toc-group">
+            <div class="toc-group-label">FOIA Requests</div>
+            <ul class="toc-items">
+              ${Object.entries(campaign.agencies).map(([id, a]) =>
+                `<li class="toc-item" data-section="${id}"><a href="#${id}">${a.name}</a></li>`
+              ).join('')}
+            </ul>
+          </li>
+        `;
+      }
+
+      if (campaign.complaints && Object.keys(campaign.complaints).length) {
+        html += `
+          <li class="toc-group">
+            <div class="toc-group-label">IG Complaints</div>
+            <ul class="toc-items">
+              ${Object.entries(campaign.complaints).map(([id, c]) =>
+                `<li class="toc-item" data-section="${id}"><a href="#${id}">${c.name}</a></li>`
+              ).join('')}
+            </ul>
+          </li>
+        `;
+      }
+
+      if (campaign.congress) {
+        html += `
+          <li class="toc-group">
+            <div class="toc-group-label">Congressional</div>
+            <ul class="toc-items">
+              <li class="toc-item" data-section="congress"><a href="#congress">Letter</a></li>
+            </ul>
+          </li>
+        `;
+      }
+
+      document.getElementById('toc').innerHTML = html;
+    }
+
+    function renderMain() {
+      let html = `
+        <section id="info">
+          <div class="sticky-form">
+            <div class="privacy-banner">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              <span><strong>100% Private:</strong> Your data never leaves your browser. No servers, no tracking, no cookies, no analytics. Saved locally on your device only.</span>
+            </div>
+            <div class="form-grid">
+              <div class="form-group col-2">
+                <label>Full Name</label>
+                <input type="text" id="fullName" placeholder="Jane Doe">
+              </div>
+              <div class="form-group col-2">
+                <label>Email</label>
+                <input type="email" id="email" placeholder="jane@example.com">
+              </div>
+              <div class="form-group col-4">
+                <label>Street Address</label>
+                <input type="text" id="street" placeholder="123 Main St">
+              </div>
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" id="city" placeholder="Minneapolis">
+              </div>
+              <div class="form-group">
+                <label>State</label>
+                <input type="text" id="state" placeholder="MN" maxlength="2">
+              </div>
+              <div class="form-group">
+                <label>ZIP</label>
+                <input type="text" id="zip" placeholder="55401">
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" id="phone" placeholder="Optional">
+              </div>
+              <div class="form-group checkbox-row" style="padding-top: 20px;">
+                <input type="checkbox" id="isMedia">
+                <label for="isMedia">I am a journalist / news media</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-eyebrow">About This Case</div>
+          <h1>${campaign.title}</h1>
+          <p class="description">${campaign.summary}</p>
+        </section>
+      `;
+
+      // FOIA sections
+      for (const [id, agency] of Object.entries(campaign.agencies || {})) {
+        html += `
+          <section id="${id}">
+            <div class="section-eyebrow">FOIA Request</div>
+            <h2>${agency.fullName}</h2>
+            <p class="description">${agency.description}</p>
+            <div class="card">
+              <div class="template-content" id="${id}-template"></div>
+              <div class="card-footer">
+                <button class="btn btn-primary" onclick="copyTemplate('${id}-template', this)">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                  Copy
+                </button>
+                <a class="btn btn-secondary" id="${id}-mailto" href="#">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  Email
+                </a>
+                <span class="link"><a href="${agency.portal}" target="_blank">${new URL(agency.portal).hostname.replace('www.', '')}</a></span>
+              </div>
+            </div>
+          </section>
+        `;
+      }
+
+      // Complaints
+      for (const [id, complaint] of Object.entries(campaign.complaints || {})) {
+        html += `
+          <section id="${id}">
+            <div class="section-eyebrow">IG Complaint</div>
+            <h2>${complaint.name}</h2>
+            <p class="description">${complaint.description}</p>
+            <div class="card">
+              <div class="template-content" id="${id}-template"></div>
+              <div class="card-footer">
+                <button class="btn btn-primary" onclick="copyTemplate('${id}-template', this)">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                  Copy
+                </button>
+                <a class="btn btn-secondary" id="${id}-mailto" href="#">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  Email
+                </a>
+                <span class="link"><a href="${complaint.portal}" target="_blank">${new URL(complaint.portal).hostname.replace('www.', '')}</a></span>
+              </div>
+            </div>
+          </section>
+        `;
+      }
+
+      // Congress
+      if (campaign.congress) {
+        html += `
+          <section id="congress">
+            <div class="section-eyebrow">Congressional</div>
+            <h2>Letter to Congress</h2>
+            <p class="description">Request oversight from your representatives. <a href="https://www.congress.gov/members/find-your-member" target="_blank">Find yours →</a></p>
+            <div class="card">
+              <div class="template-content" id="congress-template"></div>
+              <div class="card-footer">
+                <button class="btn btn-primary" onclick="copyTemplate('congress-template', this)">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                  Copy
+                </button>
+                <span class="link"><a href="https://www.congress.gov/members/find-your-member" target="_blank">congress.gov</a></span>
+              </div>
+            </div>
+          </section>
+        `;
+      }
+
+      html += `<footer>
+        <div style="margin-bottom: 8px;">Civic engagement tool · Not legal advice · <a href="https://www.foia.gov/" target="_blank">Learn about FOIA</a></div>
+        <div style="font-size: 10px; color: var(--text-muted);">
+          Created by <strong>Jung Hoon Son, M.D.</strong> ·
+          <a href="https://www.linkedin.com/in/jung-hoon-son/" target="_blank">LinkedIn</a> ·
+          <a href="https://www.threads.com/@drjunghoon" target="_blank">Threads</a>
+        </div>
+      </footer>`;
+
+      document.getElementById('main').innerHTML = html;
+
+      // Load saved form data from localStorage
+      const formFields = ['fullName', 'street', 'city', 'state', 'zip', 'email', 'phone'];
+      formFields.forEach(f => {
+        const el = document.getElementById(f);
+        const saved = localStorage.getItem('foia_' + f);
+        if (el && saved) el.value = saved;
+      });
+      const savedMedia = localStorage.getItem('foia_isMedia');
+      if (savedMedia === 'true') document.getElementById('isMedia').checked = true;
+
+      // Add event listeners to save to localStorage and update templates
+      formFields.forEach(f => {
+        const el = document.getElementById(f);
+        if (el) {
+          el.addEventListener('input', () => {
+            localStorage.setItem('foia_' + f, el.value);
+            updateTemplates();
+          });
+        }
+      });
+      document.getElementById('isMedia')?.addEventListener('change', (e) => {
+        localStorage.setItem('foia_isMedia', e.target.checked);
+        updateTemplates();
+      });
+
+      updateTemplates();
+    }
+
+    function getFormData() {
+      return {
+        name: document.getElementById('fullName')?.value || '[YOUR NAME]',
+        street: document.getElementById('street')?.value || '[ADDRESS]',
+        city: document.getElementById('city')?.value || '[CITY]',
+        state: document.getElementById('state')?.value || '[ST]',
+        zip: document.getElementById('zip')?.value || '[ZIP]',
+        email: document.getElementById('email')?.value || '[EMAIL]',
+        phone: document.getElementById('phone')?.value || '',
+        isMedia: document.getElementById('isMedia')?.checked || false
+      };
+    }
+
+    function getAddress(d) {
+      return `${d.name}\n${d.street}\n${d.city}, ${d.state} ${d.zip}\n${d.email}${d.phone ? '\n' + d.phone : ''}`;
+    }
+
+    function getDate() {
+      return new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    function generateFOIA(agency) {
+      const d = getFormData();
+      const feeType = d.isMedia ? 'representative of the news media' : 'an individual';
+      return `FREEDOM OF INFORMATION ACT REQUEST
+
+Date: ${getDate()}
+
+${agency.address}
+
+Dear FOIA Officer:
+
+Pursuant to the Freedom of Information Act, 5 U.S.C. § 552, I request copies of:
+
+${agency.requests.map((r, i) => `${i + 1}. ${r}`).join('\n\n')}
+
+FORMAT: Electronic (PDF) preferred.
+FEE CATEGORY: I am ${feeType}.
+FEE WAIVER: I request a fee waiver. Disclosure is in the public interest.
+
+Willing to pay up to $25 if waiver denied. Notify me before exceeding.
+
+If denied, cite exemptions and provide appeal procedures.
+
+Response expected within 20 business days.
+
+Sincerely,
+
+${getAddress(d)}`;
+    }
+
+    function generateComplaint(complaint) {
+      const d = getFormData();
+      return `${complaint.subject.toUpperCase()}
+
+Date: ${getDate()}
+
+${complaint.address}
+
+RE: ${complaint.subject}
+
+Dear Inspector General:
+
+I file this formal complaint regarding:
+
+ALLEGATIONS:
+
+${complaint.allegations.map((a, i) => `${i + 1}. ${a}`).join('\n\n')}
+
+REQUESTED ACTIONS:
+
+${complaint.actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}
+
+I request written confirmation of receipt.
+
+Respectfully,
+
+${getAddress(d)}`;
+    }
+
+    function generateCongress() {
+      const d = getFormData();
+      const c = campaign.congress;
+      return `REQUEST FOR CONGRESSIONAL OVERSIGHT
+
+Date: ${getDate()}
+
+[REPRESENTATIVE/SENATOR NAME]
+[OFFICE ADDRESS]
+
+Dear [Representative/Senator]:
+
+As your constituent, I request oversight regarding:
+
+BACKGROUND:
+${c.background.map(b => `• ${b}`).join('\n')}
+
+CONCERNS:
+${c.concerns.map(b => `• ${b}`).join('\n')}
+
+REQUESTED ACTIONS:
+${c.actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}
+
+Available for questions.
+
+Respectfully,
+
+${getAddress(d)}`;
+    }
+
+    function updateTemplates() {
+      for (const [id, agency] of Object.entries(campaign.agencies || {})) {
+        const el = document.getElementById(`${id}-template`);
+        if (el) el.textContent = generateFOIA(agency);
+        const mailto = document.getElementById(`${id}-mailto`);
+        if (mailto && agency.email) {
+          mailto.href = `mailto:${agency.email}?subject=${encodeURIComponent('FOIA Request - ' + campaign.title)}&body=${encodeURIComponent(generateFOIA(agency))}`;
+        }
+      }
+
+      for (const [id, complaint] of Object.entries(campaign.complaints || {})) {
+        const el = document.getElementById(`${id}-template`);
+        if (el) el.textContent = generateComplaint(complaint);
+        const mailto = document.getElementById(`${id}-mailto`);
+        if (mailto && complaint.email) {
+          mailto.href = `mailto:${complaint.email}?subject=${encodeURIComponent(complaint.subject)}&body=${encodeURIComponent(generateComplaint(complaint))}`;
+        }
+      }
+
+      if (campaign.congress) {
+        const el = document.getElementById('congress-template');
+        if (el) el.textContent = generateCongress();
+      }
+    }
+
+    async function copyTemplate(id, btn) {
+      const text = document.getElementById(id)?.textContent;
+      if (!text) return;
+      try {
+        await navigator.clipboard.writeText(text);
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Copied';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('copied'); }, 1500);
+      } catch (e) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+    }
+
+    function initScrollSync() {
+      const sections = document.querySelectorAll('section[id]');
+      const items = document.querySelectorAll('.toc-item');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            items.forEach(i => i.classList.remove('active'));
+            const active = document.querySelector(`.toc-item[data-section="${e.target.id}"]`);
+            if (active) active.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(s => obs.observe(s));
+    }
+
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+      document.querySelector('.overlay').classList.toggle('open');
+    }
+
+    function closeSidebar() {
+      document.getElementById('sidebar').classList.remove('open');
+      document.querySelector('.overlay').classList.remove('open');
+    }
+
+    document.addEventListener('click', e => {
+      if (e.target.closest('.toc-item a')) closeSidebar();
+    });
+
+    loadCampaign();
+  </script>
+</body>
+</html>
