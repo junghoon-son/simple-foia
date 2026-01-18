@@ -359,10 +359,6 @@
     section.active-section {
       position: relative;
       background: rgba(14, 165, 233, 0.08) !important;
-      box-shadow:
-        0 0 20px rgba(14, 165, 233, 0.15),
-        0 0 40px rgba(14, 165, 233, 0.1),
-        0 0 60px rgba(14, 165, 233, 0.05);
     }
 
     .sidebar-footer {
@@ -2139,7 +2135,7 @@ Constituent, ${d.city}, ${d.state}`;
             e.target.classList.add('active-section');
           }
         });
-      }, { rootMargin: '-20% 0px -70% 0px' });
+      }, { rootMargin: '-35% 0px -55% 0px' });
       sections.forEach(s => obs.observe(s));
     }
 
