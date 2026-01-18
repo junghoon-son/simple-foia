@@ -41,33 +41,78 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 24px;
+      background: #0f172a;
+      border-bottom: 1px solid #334155;
+      padding: 10px 24px;
       margin: -32px -40px 24px -40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
 
-    .privacy-banner {
+    .sticky-form-inner {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      background: #0f172a;
-      color: #e2e8f0;
-      border-radius: 6px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .sticky-form label {
+      display: none;
+    }
+
+    .sticky-form input {
+      padding: 6px 10px;
       font-size: 12px;
-      margin-bottom: 12px;
+      font-family: inherit;
+      border: 1px solid #475569;
+      border-radius: 4px;
+      background: #1e293b;
+      color: #f1f5f9;
+      transition: border-color 0.15s;
     }
 
-    .privacy-banner svg {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-      color: #22c55e;
+    .sticky-form input::placeholder {
+      color: #94a3b8;
     }
 
-    .privacy-banner strong {
+    .sticky-form input:focus {
+      outline: none;
+      border-color: #22c55e;
+    }
+
+    .sticky-form .input-name { width: 140px; }
+    .sticky-form .input-email { width: 160px; }
+    .sticky-form .input-street { width: 150px; }
+    .sticky-form .input-city { width: 100px; }
+    .sticky-form .input-state { width: 40px; }
+    .sticky-form .input-zip { width: 60px; }
+    .sticky-form .input-phone { width: 100px; }
+
+    .sticky-form .privacy-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
       color: #22c55e;
+      margin-left: auto;
+    }
+
+    .sticky-form .privacy-badge svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .sticky-form .checkbox-inline {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    .sticky-form .checkbox-inline input {
+      width: 14px;
+      height: 14px;
+      padding: 0;
     }
 
     /* Sidebar */
@@ -1093,43 +1138,22 @@
       let html = `
         <section id="info">
           <div class="sticky-form">
-            <div class="privacy-banner">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-              <span><strong>100% Private:</strong> Your data never leaves your browser. No servers, no tracking, no cookies, no analytics. Saved locally on your device only.</span>
-            </div>
-            <div class="form-grid">
-              <div class="form-group col-2">
-                <label>Full Name</label>
-                <input type="text" id="fullName" placeholder="Jane Doe">
-              </div>
-              <div class="form-group col-2">
-                <label>Email</label>
-                <input type="email" id="email" placeholder="jane@example.com">
-              </div>
-              <div class="form-group col-4">
-                <label>Street Address</label>
-                <input type="text" id="street" placeholder="123 Main St">
-              </div>
-              <div class="form-group">
-                <label>City</label>
-                <input type="text" id="city" placeholder="Minneapolis">
-              </div>
-              <div class="form-group">
-                <label>State</label>
-                <input type="text" id="state" placeholder="MN" maxlength="2">
-              </div>
-              <div class="form-group">
-                <label>ZIP</label>
-                <input type="text" id="zip" placeholder="55401">
-              </div>
-              <div class="form-group">
-                <label>Phone</label>
-                <input type="tel" id="phone" placeholder="Optional">
-              </div>
-              <div class="form-group checkbox-row" style="padding-top: 20px;">
+            <div class="sticky-form-inner">
+              <input type="text" id="fullName" class="input-name" placeholder="Full Name">
+              <input type="email" id="email" class="input-email" placeholder="Email">
+              <input type="text" id="street" class="input-street" placeholder="Street Address">
+              <input type="text" id="city" class="input-city" placeholder="City">
+              <input type="text" id="state" class="input-state" placeholder="ST" maxlength="2">
+              <input type="text" id="zip" class="input-zip" placeholder="ZIP">
+              <input type="tel" id="phone" class="input-phone" placeholder="Phone">
+              <label class="checkbox-inline">
                 <input type="checkbox" id="isMedia">
-                <label for="isMedia">I am a journalist / news media</label>
-              </div>
+                Media
+              </label>
+              <span class="privacy-badge">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                100% Private
+              </span>
             </div>
           </div>
 
