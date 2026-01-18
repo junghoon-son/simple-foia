@@ -133,6 +133,28 @@
       padding: 16px 16px 12px;
     }
 
+    .sidebar-search {
+      padding: 8px 12px;
+    }
+
+    .sidebar-search input {
+      width: 100%;
+      padding: 7px 10px;
+      font-size: 13px;
+      font-family: inherit;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg);
+    }
+
+    .sidebar-search input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--ring);
+    }
+
+    .sidebar-search input::placeholder { color: var(--text-muted); }
+
     .sidebar-logo {
       display: flex;
       align-items: center;
