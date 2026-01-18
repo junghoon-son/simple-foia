@@ -819,6 +819,81 @@
       z-index: 99;
     }
 
+    /* Completion Certificate */
+    .certificate {
+      display: none;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border: 3px solid #22c55e;
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      margin: 32px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .certificate.visible {
+      display: block;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .certificate::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px dashed rgba(34, 197, 94, 0.3);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    .certificate-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .certificate h2 {
+      color: #22c55e;
+      font-size: 28px;
+      margin: 0 0 8px 0;
+      font-weight: 700;
+    }
+
+    .certificate .subtitle {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .certificate .message {
+      color: #e2e8f0;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto 24px;
+    }
+
+    .certificate .record-count {
+      display: inline-block;
+      background: rgba(34, 197, 94, 0.15);
+      color: #22c55e;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 14px;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .certificate .fine-print {
+      color: #64748b;
+      font-size: 11px;
+      margin-top: 20px;
+    }
+
     @media (max-width: 768px) {
       .sidebar { transform: translateX(-100%); transition: transform 0.2s; }
       .sidebar.open { transform: translateX(0); }
@@ -1686,6 +1761,22 @@
         `;
       }
 
+      // Count total actions for certificate
+      const totalActions = Object.keys(c.agencies || {}).length + Object.keys(c.complaints || {}).length + (c.congress ? 1 : 0);
+
+      html += `
+        <div class="certificate" id="certificate">
+          <div class="certificate-icon">✓</div>
+          <h2>Thank You</h2>
+          <div class="subtitle">You completed all actions for this case</div>
+          <p class="message">
+            Every FOIA request, every IG complaint, every congressional letter creates a federal record that persists across administrations. You just made government accountability a little bit stronger.
+          </p>
+          <div class="record-count">${totalActions} permanent records created</div>
+          <div class="fine-print">Records persist even if ignored. The next administration can act on them.</div>
+        </div>
+      `;
+
       html += `<footer>
         <div style="margin-bottom: 8px;">Civic engagement tool · Not legal advice · <a href="https://www.foia.gov/" target="_blank">Learn about FOIA</a></div>
         <div style="font-size: 10px; color: var(--text-muted);">
@@ -1951,6 +2042,25 @@ Constituent, ${d.city}, ${d.state}`;
           tocItem.classList.remove('completed');
         }
       }
+
+      // Check if all complete
+      checkAllComplete();
+    }
+
+    function checkAllComplete() {
+      const sections = document.querySelectorAll('section[id]');
+      const checkableSections = Array.from(sections).filter(s => s.id !== 'info');
+      const allComplete = checkableSections.every(s => s.classList.contains('completed'));
+
+      const cert = document.getElementById('certificate');
+      if (cert) {
+        if (allComplete && checkableSections.length > 0) {
+          cert.classList.add('visible');
+          cert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          cert.classList.remove('visible');
+        }
+      }
     }
 
     function restoreCompletedState() {
@@ -1967,6 +2077,8 @@ Constituent, ${d.city}, ${d.state}`;
           if (tocItem) tocItem.classList.add('completed');
         }
       });
+      // Show certificate if all already complete
+      checkAllComplete();
     }
 
     async function copyTemplate(id, btn) {
