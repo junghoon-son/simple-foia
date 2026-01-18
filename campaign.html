@@ -654,11 +654,44 @@
       color: #92400e;
       border-radius: 12px;
       border: 1px solid #fcd34d;
+      cursor: help;
+      position: relative;
     }
 
     .fee-badge svg {
       width: 10px;
       height: 10px;
+    }
+
+    .fee-badge:hover::after {
+      content: 'This is the max fee YOU agree to pay. Agencies must contact you before exceeding it. You can change this amount in the template. Many requesters qualify for fee waivers.';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      padding: 8px 10px;
+      background: #1f2937;
+      color: #f3f4f6;
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.4;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      z-index: 100;
+      text-align: left;
+    }
+
+    .fee-badge:hover::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: #1f2937;
+      margin-bottom: -4px;
+      z-index: 100;
     }
 
     /* Notice */
@@ -1584,9 +1617,9 @@
                   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                   Email
                 </a>
-                <span class="fee-badge">
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                  Fee cap: $25
+                <span class="fee-badge" title="This is the max fee YOU agree to pay. You can change this amount.">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  Your fee limit: $25
                 </span>
                 <span class="link"><a href="${agency.portal}" target="_blank">${new URL(agency.portal).hostname.replace('www.', '')}</a></span>
               </div>
