@@ -1762,7 +1762,7 @@
       }
 
       // Count total actions for certificate
-      const totalActions = Object.keys(c.agencies || {}).length + Object.keys(c.complaints || {}).length + (c.congress ? 1 : 0);
+      const totalActions = Object.keys(campaign.agencies || {}).length + Object.keys(campaign.complaints || {}).length + (campaign.congress ? 1 : 0);
 
       html += `
         <div class="certificate" id="certificate">
