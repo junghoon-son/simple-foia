@@ -173,7 +173,7 @@
       width: 256px;
       height: 100vh;
       border-right: 1px solid var(--border);
-      background: var(--surface);
+      background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
       display: flex;
       flex-direction: column;
       z-index: 100;
@@ -328,7 +328,8 @@
       color: #0ea5e9;
       font-weight: 600;
       border-left-color: #0ea5e9;
-      background: rgba(14, 165, 233, 0.08);
+      background: rgba(14, 165, 233, 0.12);
+      box-shadow: inset 2px 0 8px rgba(14, 165, 233, 0.15);
     }
 
     /* Active section highlight */
@@ -342,9 +343,22 @@
       left: -40px;
       top: 0;
       bottom: 0;
-      width: 3px;
-      background: #0ea5e9;
+      width: 4px;
+      background: linear-gradient(180deg, #0ea5e9 0%, #6366f1 100%);
       border-radius: 0 2px 2px 0;
+      box-shadow: 0 0 16px rgba(14, 165, 233, 0.5);
+    }
+
+    section.active-section::after {
+      content: '';
+      position: absolute;
+      left: -40px;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, rgba(14, 165, 233, 0.05) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: -1;
     }
 
     .sidebar-footer {
