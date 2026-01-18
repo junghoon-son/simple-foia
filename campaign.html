@@ -62,9 +62,10 @@
       top: 0;
       z-index: 50;
       background: #0f172a;
-      border-bottom: 1px solid #334155;
-      margin: -32px -40px 24px -40px;
+      border-radius: 8px;
+      margin-bottom: 24px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      overflow: hidden;
     }
 
     .sticky-case-name {
@@ -361,6 +362,7 @@
     .main {
       flex: 1;
       margin-left: 256px;
+      overflow-x: hidden;
     }
 
     section {
@@ -903,7 +905,9 @@
 
       /* Sticky header mobile */
       .sticky-header {
-        margin: -60px -12px 16px -12px;
+        margin: 0 0 16px 0;
+        border-radius: 0;
+        top: 56px;
       }
 
       .sticky-case-name {
