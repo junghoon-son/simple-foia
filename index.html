@@ -319,6 +319,54 @@
 
     .notice svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px; }
 
+    .foia-explainer {
+      margin-bottom: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .foia-explainer summary {
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .foia-explainer summary::-webkit-details-marker { display: none; }
+
+    .foia-explainer summary::after {
+      content: '+';
+      font-size: 16px;
+      color: var(--text-muted);
+    }
+
+    .foia-explainer[open] summary::after {
+      content: '−';
+    }
+
+    .foia-explainer-content {
+      padding: 0 16px 14px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .foia-explainer-content p {
+      margin: 10px 0 0;
+    }
+
+    .foia-explainer-content p:first-child {
+      margin-top: 12px;
+    }
+
     .empty-state {
       padding: 24px 12px;
       text-align: center;
@@ -461,7 +509,7 @@
       <div class="sidebar-header">
         <a href="index.html" class="sidebar-logo">
           <div class="logo-main">Permanent<span>Record</span></div>
-          <div class="logo-tagline">Create records that matter</div>
+          <div class="logo-tagline">FOIA requests that create records</div>
         </a>
       </div>
 
@@ -496,8 +544,17 @@
           <div style="font-size: 32px; font-weight: 800; letter-spacing: -1px; color: var(--text);">Permanent<span style="color: #dc2626;">Record</span></div>
         </div>
 
-        <h1>Create records that matter</h1>
+        <h1>Use FOIA to create records that matter</h1>
         <p>Generate FOIA requests and official complaints. Every submission creates a federal record that can't be easily deleted.</p>
+
+        <details class="foia-explainer">
+          <summary>What is FOIA?</summary>
+          <div class="foia-explainer-content">
+            <p><strong>FOIA</strong> (Freedom of Information Act) is a law that says the government has to show you its records if you ask.</p>
+            <p>Think of it like this: the government works for us, and we have a right to see what they're doing. When you send a FOIA request, you're saying "show me the documents about X."</p>
+            <p><strong>Why it matters:</strong> Your request itself becomes a federal record. Even if they don't give you everything, they have to log that you asked. That paper trail can't be easily deleted — and it shows someone was paying attention.</p>
+          </div>
+        </details>
 
         <div class="welcome-steps">
           <div class="welcome-step">
