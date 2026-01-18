@@ -677,32 +677,33 @@
     /* Sources/Media links */
     .sources {
       margin-top: 16px;
-      padding-top: 16px;
+      padding-top: 12px;
       border-top: 1px solid var(--border);
     }
 
     .sources-label {
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 600;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .sources-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
     }
 
     .source-card {
-      display: flex;
-      flex-direction: column;
-      padding: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 6px;
       text-decoration: none;
       color: inherit;
       transition: all 0.15s;
@@ -710,40 +711,37 @@
 
     .source-card:hover {
       border-color: var(--accent);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      transform: translateY(-1px);
+      background: var(--border-subtle);
     }
 
     .source-card-icon {
-      width: 32px;
-      height: 32px;
+      width: 20px;
+      height: 20px;
       background: var(--border-subtle);
-      border-radius: 6px;
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 8px;
-      font-size: 14px;
+      font-size: 9px;
       font-weight: 700;
       color: var(--text-secondary);
+      flex-shrink: 0;
     }
 
     .source-card-name {
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 500;
       color: var(--text);
-      margin-bottom: 2px;
     }
 
     .source-card-domain {
-      font-size: 10px;
-      color: var(--text-muted);
+      display: none;
     }
 
-    @media (max-width: 768px) {
-      .sources-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .source-card-arrow {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-left: 2px;
     }
 
     .notice-info {
@@ -957,7 +955,8 @@
         <div style="margin-top: 6px; font-size: 10px;">
           By <strong>Jung Hoon Son, M.D.</strong><br>
           <a href="https://www.linkedin.com/in/jung-hoon-son/" target="_blank">LinkedIn</a> ·
-          <a href="https://www.threads.com/@drjunghoon" target="_blank">Threads</a>
+          <a href="https://www.threads.com/@drjunghoon" target="_blank">Threads</a> ·
+          <a href="https://buymeacoffee.com/junghoonson" target="_blank" style="color: #f59e0b;">Buy me a coffee ☕</a>
         </div>
       </div>
     </aside>
@@ -981,6 +980,8 @@
           {"name": "The Intercept", "url": "https://theintercept.com/2026/01/08/ice-agent-identified-shooting-minneapolis-jonathan-ross/"},
           {"name": "Star Tribune", "url": "https://www.startribune.com/ice-agent-who-fatally-shot-woman-in-minneapolis-is-identified/601560214"},
           {"name": "CNN", "url": "https://www.cnn.com/2026/01/10/us/ice-shooting-minneapolis-renee-good"},
+          {"name": "Newsweek", "url": "https://www.newsweek.com/jonathan-ross-ice-agent-shooting-minneapolis-minnesota-11332093"},
+          {"name": "WBUR", "url": "https://www.wbur.org/news/2026/01/09/johnathan-ross-ice-killing-renee-good-minneapolis-background"},
           {"name": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Killing_of_Renee_Good"}
         ],
         "agencies": {
@@ -1129,6 +1130,8 @@
         "sources": [
           {"name": "Washington Post", "url": "https://www.washingtonpost.com/immigration/2026/01/15/ice-detention-death-homicide/"},
           {"name": "NBC Miami", "url": "https://www.nbcmiami.com/news/local/ice-says-cuban-immigrant-died-while-attempting-suicide-a-witness-says-guards-pinned-and-choked-him/3750565/"},
+          {"name": "Newsweek", "url": "https://www.newsweek.com/who-geraldo-lunas-campos-death-ice-custody-scrutiny-11372923"},
+          {"name": "NewsNation", "url": "https://www.newsnationnow.com/us-news/southwest/report-death-at-camp-east-montana-could-be-ruled-a-homicide/"},
           {"name": "WHAM Rochester", "url": "https://13wham.com/news/local/man-arrested-in-rochester-new-york-henrietta-resident-dies-at-ice-facility-in-el-paso-texas-camp-east-montana-detention-facility-sex-offender-cuba-cuban-citizen-immigration-customs-border-patrol-homicide-investigation-washington-post"},
           {"name": "ACLU", "url": "https://www.aclu.org/press-releases/aclu-renews-calls-for-closure-of-camp-east-montana-following-reports-that-detained-immigrant-was-choked-to-death-by-ice-officer"}
         ],
@@ -1290,7 +1293,9 @@
         "keywords": ["ice", "los angeles", "shooting", "off-duty", "northridge", "lapd", "keith porter", "brian palacios"],
         "sources": [
           {"name": "ABC7 Los Angeles", "url": "https://abc7.com/post/keith-porter-death-advocates-want-legal-action-man-shot-killed-off-duty-ice-agent-northridge/18359155/"},
+          {"name": "Fox LA", "url": "https://www.foxla.com/news/ice-shooting-keith-porter-northridge"},
           {"name": "Capital & Main", "url": "https://capitalandmain.com/why-no-charges-friends-family-of-man-killed-by-off-duty-ice-officer-ask-after-new-years-eve-shooting"},
+          {"name": "NewsOne", "url": "https://newsone.com/6755184/off-duty-ice-agent-killed-black-man-keith-porter-los-angeles/"},
           {"name": "KTLA", "url": "https://ktla.com/news/los-angeles-police-commission-grilled-about-fatal-ice-officer-involved-shooting-of-california-man/"},
           {"name": "TheGrio", "url": "https://thegrio.com/2026/01/16/court-documents-allegedly-reveal-ice-agent-keith-porter-jr/"}
         ],
@@ -1540,12 +1545,11 @@
             <div class="sources-label">News Coverage</div>
             <div class="sources-grid">
               ${campaign.sources.map(s => {
-                const domain = new URL(s.url).hostname.replace('www.', '');
                 const initials = s.name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
                 return `<a href="${s.url}" target="_blank" class="source-card">
                   <div class="source-card-icon">${initials}</div>
-                  <div class="source-card-name">${s.name}</div>
-                  <div class="source-card-domain">${domain}</div>
+                  <span class="source-card-name">${s.name}</span>
+                  <span class="source-card-arrow">↗</span>
                 </a>`;
               }).join('')}
             </div>
