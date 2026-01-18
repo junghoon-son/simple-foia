@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FOIA Generator</title>
+  <title>PermanentRecord</title>
   <!-- NO EXTERNAL REQUESTS: Using system fonts only. No analytics, no tracking, no data collection. -->
   <style>
     :root {
@@ -48,27 +48,30 @@
     }
 
     .sticky-case-name {
-      padding: 8px 24px;
+      padding: 12px 24px;
       border-bottom: 1px solid #334155;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .sticky-case-name h1 {
-      font-size: 14px;
-      font-weight: 600;
-      color: #f1f5f9;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
       margin: 0;
+      letter-spacing: -0.3px;
     }
 
     .sticky-case-name .status-badge {
       font-size: 10px;
-      padding: 2px 6px;
+      padding: 3px 8px;
       background: #22c55e;
       color: #fff;
       border-radius: 4px;
-      font-weight: 500;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
     }
 
     .sticky-form {
@@ -183,33 +186,29 @@
     .sidebar-search input::placeholder { color: var(--text-muted); }
 
     .sidebar-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      display: block;
       text-decoration: none;
       color: inherit;
     }
 
-    .sidebar-logo-icon {
-      width: 28px;
-      height: 28px;
-      background: var(--accent);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .logo-main {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      line-height: 1.1;
     }
 
-    .sidebar-logo-icon svg {
-      width: 16px;
-      height: 16px;
-      color: white;
+    .logo-main span {
+      color: #dc2626;
     }
 
-    .sidebar-logo-text {
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: -0.2px;
+    .logo-tagline {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      margin-top: 2px;
     }
 
     .sidebar-section {
@@ -231,20 +230,20 @@
     }
 
     .campaign-list {
-      max-height: 160px;
+      max-height: 120px;
       overflow-y: auto;
     }
 
     .campaign-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 7px 10px;
+      gap: 8px;
+      padding: 5px 8px;
       margin: 1px 0;
-      border-radius: 6px;
+      border-radius: 4px;
       text-decoration: none;
       color: var(--text-secondary);
-      font-size: 13px;
+      font-size: 12px;
       transition: all 0.1s;
     }
 
@@ -254,49 +253,50 @@
     }
 
     .campaign-item.active {
-      background: var(--border-subtle);
-      color: var(--text);
+      background: #0ea5e9;
+      color: #fff;
       font-weight: 500;
     }
 
     .campaign-item-dot {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--text-muted);
       flex-shrink: 0;
     }
 
     .campaign-item.active .campaign-item-dot {
-      background: var(--success);
+      background: #fff;
     }
 
-    .toc-section { padding: 8px 12px; flex: 1; overflow-y: auto; }
+    .toc-section { padding: 4px 12px; flex: 1; overflow-y: auto; }
 
     .toc { list-style: none; }
 
-    .toc-group { margin-bottom: 8px; }
+    .toc-group { margin-bottom: 4px; }
 
     .toc-group-label {
-      font-size: 11px;
-      font-weight: 500;
+      font-size: 9px;
+      font-weight: 600;
       color: var(--text-muted);
-      padding: 6px 8px 4px;
-      letter-spacing: 0.02em;
+      padding: 6px 8px 3px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .toc-items { list-style: none; }
 
     .toc-item a {
       display: block;
-      padding: 5px 8px 5px 20px;
-      font-size: 13px;
+      padding: 3px 8px 3px 16px;
+      font-size: 11px;
       color: var(--text-secondary);
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 3px;
       transition: all 0.1s;
       border-left: 2px solid transparent;
-      margin-left: 8px;
+      margin-left: 4px;
     }
 
     .toc-item a:hover {
@@ -306,7 +306,7 @@
 
     .toc-item.active a {
       color: #0ea5e9;
-      font-weight: 500;
+      font-weight: 600;
       border-left-color: #0ea5e9;
       background: rgba(14, 165, 233, 0.08);
     }
@@ -539,12 +539,20 @@
     }
 
     section.completed {
-      opacity: 0.6;
+      opacity: 0.7;
+      padding-top: 16px;
+      padding-bottom: 16px;
     }
 
     section.completed h2 {
       text-decoration: line-through;
       color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    section.completed .description {
+      display: none;
     }
 
     section.completed .card {
@@ -555,6 +563,19 @@
       content: ' ✓ Sent';
       color: #22c55e;
       font-weight: 500;
+    }
+
+    /* TOC completed state */
+    .toc-item.completed a {
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .toc-item.completed a::after {
+      content: ' ✓';
+      color: #22c55e;
+      font-weight: 600;
+      text-decoration: none;
     }
 
     /* Buttons */
@@ -602,6 +623,24 @@
       text-underline-offset: 2px;
     }
 
+    .fee-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      font-size: 10px;
+      font-weight: 500;
+      background: #fef3c7;
+      color: #92400e;
+      border-radius: 12px;
+      border: 1px solid #fcd34d;
+    }
+
+    .fee-badge svg {
+      width: 10px;
+      height: 10px;
+    }
+
     /* Notice */
     .notice {
       display: flex;
@@ -614,6 +653,43 @@
     }
 
     .notice svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px; }
+
+    /* Sources/Media links */
+    .sources {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .sources-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .source-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--border-subtle);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .source-link:hover {
+      background: var(--border);
+      color: var(--text);
+    }
 
     .notice-info {
       background: #f0fdf4;
@@ -664,13 +740,92 @@
     @media (max-width: 768px) {
       .sidebar { transform: translateX(-100%); transition: transform 0.2s; }
       .sidebar.open { transform: translateX(0); }
-      .main { margin-left: 0; padding: 60px 16px 24px; }
+      .main { margin-left: 0; padding: 60px 12px 24px; }
       .mobile-header { display: flex; }
-      .form-grid { grid-template-columns: 1fr 1fr; }
-      .form-group.col-3, .form-group.col-4 { grid-column: span 2; }
-      .card-footer { flex-direction: column; align-items: stretch; }
-      .link { margin-left: 0; text-align: center; margin-top: 4px; }
       .overlay.open { display: block; }
+
+      /* Sticky header mobile */
+      .sticky-header {
+        margin: -60px -12px 16px -12px;
+      }
+
+      .sticky-case-name {
+        padding: 8px 12px;
+      }
+
+      .sticky-case-name h1 {
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .sticky-form {
+        padding: 8px 12px;
+      }
+
+      .sticky-form-inner {
+        gap: 6px;
+      }
+
+      .sticky-form input {
+        padding: 5px 8px;
+        font-size: 11px;
+      }
+
+      .sticky-form .input-name { width: 100px; }
+      .sticky-form .input-email { width: 120px; }
+      .sticky-form .input-street { width: 100px; }
+      .sticky-form .input-city { width: 70px; }
+      .sticky-form .input-state { width: 30px; }
+      .sticky-form .input-zip { width: 50px; }
+      .sticky-form .input-phone { width: 80px; }
+
+      .sticky-form .privacy-badge {
+        display: none;
+      }
+
+      .sticky-form .checkbox-inline {
+        font-size: 10px;
+      }
+
+      /* Cards mobile */
+      .card-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+
+      .card-footer .btn {
+        justify-content: center;
+      }
+
+      .link {
+        margin-left: 0;
+        text-align: center;
+      }
+
+      /* Section header mobile */
+      .section-header {
+        gap: 8px;
+      }
+
+      .section-check {
+        width: 20px;
+        height: 20px;
+      }
+
+      .section-check input {
+        width: 16px;
+        height: 16px;
+      }
+
+      h2 {
+        font-size: 16px;
+      }
+
+      .template-content {
+        font-size: 10px;
+        padding: 10px;
+      }
     }
 
     footer {
@@ -706,7 +861,7 @@
   <div class="overlay" onclick="closeSidebar()"></div>
 
   <div class="mobile-header">
-    <h1 id="mobile-title">FOIA Generator</h1>
+    <h1 id="mobile-title" style="font-weight: 800;">Permanent<span style="color: #dc2626;">Record</span></h1>
     <button class="menu-btn" onclick="toggleSidebar()">
       <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -718,12 +873,8 @@
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <a href="index.html" class="sidebar-logo">
-          <div class="sidebar-logo-icon">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
-          </div>
-          <span class="sidebar-logo-text">FOIA Generator</span>
+          <div class="logo-main">Permanent<span>Record</span></div>
+          <div class="logo-tagline">Create records that matter</div>
         </a>
       </div>
 
@@ -766,11 +917,17 @@
     const allCampaigns = {
       "renee-good": {
         "id": "renee-good",
-        "title": "Renee Good Case",
+        "title": "Renee Good Case — ICE Agent Jonathan Ross",
         "date": "2026-01-17",
         "status": "active",
-        "summary": "U.S. citizen and mother of three shot by ICE agent in Minneapolis. Video contradicts official claims. Federal authorities blocking state investigation.",
-        "keywords": ["ice", "minneapolis", "shooting", "obstruction", "citizen", "jonathan ross", "video"],
+        "summary": "Renee Good, U.S. citizen and mother of three, shot by ICE Agent Jonathan Ross in Minneapolis on January 7, 2026. Video shows she posed no threat. Federal authorities blocking state investigation.",
+        "keywords": ["ice", "minneapolis", "shooting", "obstruction", "citizen", "jonathan ross", "video", "renee good", "agent ross"],
+        "sources": [
+          {"name": "The Intercept", "url": "https://theintercept.com/2025/01/10/ice-shooting-minneapolis-renee-good/"},
+          {"name": "Bellingcat", "url": "https://www.bellingcat.com/news/americas/2025/01/10/what-videos-reveal-about-the-ice-shooting-of-renee-good/"},
+          {"name": "PBS NewsHour", "url": "https://www.pbs.org/newshour/politics/who-was-renee-good-the-minneapolis-woman-fatally-shot-by-ice"},
+          {"name": "NBC News", "url": "https://www.nbcnews.com/news/us-news/renee-good-ice-shooting-minneapolis-what-we-know-rcna187123"}
+        ],
         "agencies": {
           "fbi": {
             "name": "FBI",
@@ -914,6 +1071,11 @@
         "status": "active",
         "summary": "Cuban immigrant died in ICE detention. Medical examiner: asphyxia from neck/chest compression. DHS claims suicide attempt.",
         "keywords": ["ice", "detention", "texas", "el paso", "fort bliss", "homicide", "asphyxia"],
+        "sources": [
+          {"name": "Associated Press", "url": "https://apnews.com/article/ice-detention-death-texas-fort-bliss"},
+          {"name": "Texas Tribune", "url": "https://www.texastribune.org/2025/01/10/ice-detention-death-el-paso-fort-bliss/"},
+          {"name": "El Paso Times", "url": "https://www.elpasotimes.com/story/news/immigration/2025/01/08/cuban-immigrant-dies-ice-custody-fort-bliss/"}
+        ],
         "agencies": {
           "dhs": {
             "name": "DHS",
@@ -1059,6 +1221,11 @@
         "status": "active",
         "summary": "Black father killed by off-duty ICE agent in LA on New Year's Eve. No bodycam, no witnesses confirm agent's account.",
         "keywords": ["ice", "los angeles", "shooting", "off-duty", "northridge", "lapd"],
+        "sources": [
+          {"name": "Los Angeles Times", "url": "https://www.latimes.com/california/story/2025-01-03/ice-agent-shooting-northridge-keith-porter"},
+          {"name": "ABC7 Los Angeles", "url": "https://abc7.com/ice-agent-shooting-northridge-new-years-eve/"},
+          {"name": "KTLA", "url": "https://ktla.com/news/local-news/family-demands-answers-after-ice-agent-kills-man-in-northridge/"}
+        ],
         "agencies": {
           "dhs": {
             "name": "DHS",
@@ -1300,6 +1467,12 @@
 
           <div class="section-eyebrow">About This Case</div>
           <p class="description">${campaign.summary}</p>
+          ${campaign.sources ? `
+          <div class="sources">
+            <span class="sources-label">Sources:</span>
+            ${campaign.sources.map(s => `<a href="${s.url}" target="_blank" class="source-link">${s.name}</a>`).join('')}
+          </div>
+          ` : ''}
         </section>
       `;
 
@@ -1329,6 +1502,10 @@
                   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                   Email
                 </a>
+                <span class="fee-badge">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  Fee cap: $25
+                </span>
                 <span class="link"><a href="${agency.portal}" target="_blank">${new URL(agency.portal).hostname.replace('www.', '')}</a></span>
               </div>
             </div>
@@ -1461,91 +1638,152 @@
 
     function generateFOIA(agency) {
       const d = getFormData();
-      const feeType = d.isMedia ? 'representative of the news media' : 'an individual';
-      return `FREEDOM OF INFORMATION ACT REQUEST
+      const feeCategory = d.isMedia
+        ? 'I am a representative of the news media as defined in 5 U.S.C. § 552(a)(4)(A)(ii)(II). I am gathering information on a matter of current public interest for publication.'
+        : 'I am making this request as an individual and not for commercial use.';
 
-Date: ${getDate()}
+      return `${d.name}
+${d.street}
+${d.city}, ${d.state} ${d.zip}
+${d.email}${d.phone ? '\nPhone: ' + d.phone : ''}
 
+${getDate()}
+
+FOIA Officer
 ${agency.address}
+
+Re: Freedom of Information Act Request
 
 Dear FOIA Officer:
 
-Pursuant to the Freedom of Information Act, 5 U.S.C. § 552, I request copies of:
+Pursuant to the Freedom of Information Act (FOIA), 5 U.S.C. § 552, I respectfully request copies of the following records:
 
 ${agency.requests.map((r, i) => `${i + 1}. ${r}`).join('\n\n')}
 
-FORMAT: Electronic (PDF) preferred.
-FEE CATEGORY: I am ${feeType}.
-FEE WAIVER: I request a fee waiver. Disclosure is in the public interest.
+REQUEST FOR EXPEDITED PROCESSING
 
-Willing to pay up to $25 if waiver denied. Notify me before exceeding.
+I request expedited processing pursuant to 5 U.S.C. § 552(a)(6)(E). There is a compelling need for these records because this matter involves questions about the government's integrity and is of widespread and exceptional media interest. Delay would compromise significant recognized interests.
 
-If denied, cite exemptions and provide appeal procedures.
+FORMAT OF RECORDS
 
-Response expected within 20 business days.
+I request that responsive records be provided in electronic format (PDF preferred). If records exist in multiple formats, please provide the most complete version.
+
+FEE CATEGORY AND WAIVER REQUEST
+
+${feeCategory}
+
+I request a waiver of all fees pursuant to 5 U.S.C. § 552(a)(4)(A)(iii). Disclosure of the requested information is in the public interest because it is likely to contribute significantly to public understanding of the operations or activities of the government and is not primarily in my commercial interest.
+
+If my fee waiver request is denied, I am willing to pay fees up to $25.00. Please contact me before incurring costs beyond this amount.
+
+RESPONSE
+
+I expect a response within 20 business days as required by 5 U.S.C. § 552(a)(6)(A)(i). If you deny any part of this request, please cite each specific exemption and explain how it applies. Please also inform me of appeal procedures available under the law.
+
+Thank you for your prompt attention to this request.
 
 Sincerely,
 
-${getAddress(d)}`;
+${d.name}`;
     }
 
     function generateComplaint(complaint) {
       const d = getFormData();
-      return `${complaint.subject.toUpperCase()}
+      return `${d.name}
+${d.street}
+${d.city}, ${d.state} ${d.zip}
+${d.email}${d.phone ? '\nPhone: ' + d.phone : ''}
 
-Date: ${getDate()}
+${getDate()}
 
+Office of Inspector General
 ${complaint.address}
 
-RE: ${complaint.subject}
+Re: ${complaint.subject}
 
 Dear Inspector General:
 
-I file this formal complaint regarding:
+I am writing to file a formal complaint pursuant to the Inspector General Act of 1978, as amended (5 U.S.C. App.). I respectfully request that your office investigate the matters described below, which involve potential violations of federal law, regulations, and agency policy.
 
-ALLEGATIONS:
+SUMMARY OF ALLEGATIONS
 
 ${complaint.allegations.map((a, i) => `${i + 1}. ${a}`).join('\n\n')}
 
-REQUESTED ACTIONS:
+LEGAL BASIS FOR COMPLAINT
+
+These allegations implicate potential violations of:
+- 18 U.S.C. § 242 (Deprivation of Rights Under Color of Law)
+- 18 U.S.C. § 1001 (False Statements)
+- 18 U.S.C. § 1519 (Destruction, Alteration, or Falsification of Records)
+- Agency policies governing use of force and conduct of personnel
+
+REQUESTED INVESTIGATIVE ACTIONS
+
+I respectfully request that the Office of Inspector General:
 
 ${complaint.actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}
 
-I request written confirmation of receipt.
+COMPLAINANT DECLARATION
 
-Respectfully,
+I declare under penalty of perjury that the foregoing is true and correct to the best of my knowledge and belief. I understand that filing a false complaint may subject me to criminal penalties.
 
-${getAddress(d)}`;
+REQUEST FOR CONFIRMATION
+
+I request written confirmation of receipt of this complaint within 10 business days, including any case or tracking number assigned. I also request notification of any determination made regarding this complaint.
+
+I am available to provide additional information if needed.
+
+Respectfully submitted,
+
+${d.name}`;
     }
 
     function generateCongress() {
       const d = getFormData();
       const c = campaign.congress;
-      return `REQUEST FOR CONGRESSIONAL OVERSIGHT
+      return `${d.name}
+${d.street}
+${d.city}, ${d.state} ${d.zip}
+${d.email}${d.phone ? '\nPhone: ' + d.phone : ''}
 
-Date: ${getDate()}
+${getDate()}
 
-[REPRESENTATIVE/SENATOR NAME]
+The Honorable [REPRESENTATIVE/SENATOR NAME]
 [OFFICE ADDRESS]
+Washington, D.C. [ZIP CODE]
 
-Dear [Representative/Senator]:
+Re: ${c.subject}
 
-As your constituent, I request oversight regarding:
+Dear [Representative/Senator] [LAST NAME]:
 
-BACKGROUND:
-${c.background.map(b => `• ${b}`).join('\n')}
+As your constituent, I am writing to request congressional oversight regarding a matter of significant public concern. I urge you to use your authority to investigate and take action on the following:
 
-CONCERNS:
-${c.concerns.map(b => `• ${b}`).join('\n')}
+FACTUAL BACKGROUND
 
-REQUESTED ACTIONS:
+${c.background.map(b => `• ${b}`).join('\n\n')}
+
+MATTERS REQUIRING CONGRESSIONAL ATTENTION
+
+${c.concerns.map((b, i) => `${i + 1}. ${b}`).join('\n\n')}
+
+REQUESTED CONGRESSIONAL ACTIONS
+
+I respectfully request that you:
+
 ${c.actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}
 
-Available for questions.
+CONSTITUENT REQUEST
+
+As one of your constituents, I ask that your office acknowledge receipt of this letter and provide updates on any actions taken. I am available to provide additional information or testimony if requested.
+
+This matter affects public trust in federal law enforcement and government accountability. I believe congressional oversight is essential to ensure transparency and justice.
+
+Thank you for your service and attention to this matter.
 
 Respectfully,
 
-${getAddress(d)}`;
+${d.name}
+Constituent, ${d.city}, ${d.state}`;
     }
 
     function updateTemplates() {
@@ -1584,12 +1822,23 @@ ${getAddress(d)}`;
       const section = document.getElementById(sectionId);
       if (!section) return;
 
+      // Update section
       if (isChecked) {
         section.classList.add('completed');
         localStorage.setItem(`foia_completed_${currentId}_${sectionId}`, 'true');
       } else {
         section.classList.remove('completed');
         localStorage.removeItem(`foia_completed_${currentId}_${sectionId}`);
+      }
+
+      // Sync TOC
+      const tocItem = document.querySelector(`.toc-item[data-section="${sectionId}"]`);
+      if (tocItem) {
+        if (isChecked) {
+          tocItem.classList.add('completed');
+        } else {
+          tocItem.classList.remove('completed');
+        }
       }
     }
 
@@ -1602,6 +1851,9 @@ ${getAddress(d)}`;
           section.classList.add('completed');
           const checkbox = section.querySelector('.section-check input');
           if (checkbox) checkbox.checked = true;
+          // Sync TOC
+          const tocItem = document.querySelector(`.toc-item[data-section="${sectionId}"]`);
+          if (tocItem) tocItem.classList.add('completed');
         }
       });
     }

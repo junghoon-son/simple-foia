@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FOIA Generator</title>
+  <title>PermanentRecord</title>
   <!-- NO EXTERNAL REQUESTS: Using system fonts only. No analytics, no tracking, no data collection. -->
   <style>
     :root {
@@ -51,33 +51,29 @@
     }
 
     .sidebar-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      display: block;
       text-decoration: none;
       color: inherit;
     }
 
-    .sidebar-logo-icon {
-      width: 28px;
-      height: 28px;
-      background: var(--accent);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .logo-main {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      line-height: 1.1;
     }
 
-    .sidebar-logo-icon svg {
-      width: 16px;
-      height: 16px;
-      color: white;
+    .logo-main span {
+      color: #dc2626;
     }
 
-    .sidebar-logo-text {
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: -0.2px;
+    .logo-tagline {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      margin-top: 2px;
     }
 
     .sidebar-divider {
@@ -334,7 +330,7 @@
   <div class="overlay" onclick="closeSidebar()"></div>
 
   <div class="mobile-header">
-    <h1>FOIA Generator</h1>
+    <h1 style="font-weight: 800;">Permanent<span style="color: #dc2626;">Record</span></h1>
     <button class="menu-btn" onclick="toggleSidebar()">
       <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -346,12 +342,8 @@
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <a href="index.html" class="sidebar-logo">
-          <div class="sidebar-logo-icon">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
-          </div>
-          <span class="sidebar-logo-text">FOIA Generator</span>
+          <div class="logo-main">Permanent<span>Record</span></div>
+          <div class="logo-tagline">Create records that matter</div>
         </a>
       </div>
 
@@ -381,10 +373,8 @@
 
     <main class="main">
       <div class="welcome">
-        <div class="welcome-icon">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-          </svg>
+        <div style="margin-bottom: 20px;">
+          <div style="font-size: 32px; font-weight: 800; letter-spacing: -1px; color: var(--text);">Permanent<span style="color: #dc2626;">Record</span></div>
         </div>
 
         <h1>Create records that matter</h1>
@@ -422,11 +412,11 @@
     const campaigns = {
       "renee-good": {
         "id": "renee-good",
-        "title": "Renee Good Case",
+        "title": "Renee Good — ICE Agent Jonathan Ross",
         "date": "2026-01-17",
         "status": "active",
-        "summary": "U.S. citizen and mother of three shot by ICE agent in Minneapolis. Video contradicts official claims. Federal authorities blocking state investigation.",
-        "keywords": ["ice", "minneapolis", "shooting", "obstruction", "citizen", "jonathan ross", "video"]
+        "summary": "Renee Good, U.S. citizen and mother of three, shot by ICE Agent Jonathan Ross in Minneapolis on January 7, 2026. Video shows she posed no threat. Federal authorities blocking state investigation.",
+        "keywords": ["ice", "minneapolis", "shooting", "obstruction", "citizen", "jonathan ross", "video", "renee good", "agent ross"]
       },
       "geraldo-lunas-campos": {
         "id": "geraldo-lunas-campos",
