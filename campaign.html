@@ -256,9 +256,26 @@
     }
 
     .toc-item.active a {
-      color: var(--text);
-      border-left-color: var(--accent);
-      background: var(--border-subtle);
+      color: #0ea5e9;
+      font-weight: 500;
+      border-left-color: #0ea5e9;
+      background: rgba(14, 165, 233, 0.08);
+    }
+
+    /* Active section highlight */
+    section.active-section {
+      position: relative;
+    }
+
+    section.active-section::before {
+      content: '';
+      position: absolute;
+      left: -40px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #0ea5e9;
+      border-radius: 0 2px 2px 0;
     }
 
     .sidebar-footer {
@@ -1433,9 +1450,13 @@ ${getAddress(d)}`;
       const obs = new IntersectionObserver(entries => {
         entries.forEach(e => {
           if (e.isIntersecting) {
+            // Update TOC
             items.forEach(i => i.classList.remove('active'));
             const active = document.querySelector(`.toc-item[data-section="${e.target.id}"]`);
             if (active) active.classList.add('active');
+            // Update section highlight
+            sections.forEach(s => s.classList.remove('active-section'));
+            e.target.classList.add('active-section');
           }
         });
       }, { rootMargin: '-20% 0px -70% 0px' });
