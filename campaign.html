@@ -36,16 +36,43 @@
 
     .layout { display: flex; min-height: 100vh; }
 
-    /* Sticky form header */
-    .sticky-form {
+    /* Sticky header with case name + form */
+    .sticky-header {
       position: sticky;
       top: 0;
       z-index: 50;
       background: #0f172a;
       border-bottom: 1px solid #334155;
-      padding: 10px 24px;
       margin: -32px -40px 24px -40px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .sticky-case-name {
+      padding: 8px 24px;
+      border-bottom: 1px solid #334155;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sticky-case-name h1 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin: 0;
+    }
+
+    .sticky-case-name .status-badge {
+      font-size: 10px;
+      padding: 2px 6px;
+      background: #22c55e;
+      color: #fff;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .sticky-form {
+      padding: 10px 24px;
     }
 
     .sticky-form-inner {
@@ -1245,28 +1272,33 @@
     function renderMain() {
       let html = `
         <section id="info">
-          <div class="sticky-form">
-            <div class="sticky-form-inner">
-              <input type="text" id="fullName" class="input-name" placeholder="Full Name">
-              <input type="email" id="email" class="input-email" placeholder="Email">
-              <input type="text" id="street" class="input-street" placeholder="Street Address">
-              <input type="text" id="city" class="input-city" placeholder="City">
-              <input type="text" id="state" class="input-state" placeholder="ST" maxlength="2">
-              <input type="text" id="zip" class="input-zip" placeholder="ZIP">
-              <input type="tel" id="phone" class="input-phone" placeholder="Phone">
-              <label class="checkbox-inline">
-                <input type="checkbox" id="isMedia">
-                Media
-              </label>
-              <span class="privacy-badge">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                100% Private
-              </span>
+          <div class="sticky-header">
+            <div class="sticky-case-name">
+              <h1>${campaign.title}</h1>
+              ${campaign.status === 'active' ? '<span class="status-badge">Active</span>' : ''}
+            </div>
+            <div class="sticky-form">
+              <div class="sticky-form-inner">
+                <input type="text" id="fullName" class="input-name" placeholder="Full Name">
+                <input type="email" id="email" class="input-email" placeholder="Email">
+                <input type="text" id="street" class="input-street" placeholder="Street Address">
+                <input type="text" id="city" class="input-city" placeholder="City">
+                <input type="text" id="state" class="input-state" placeholder="ST" maxlength="2">
+                <input type="text" id="zip" class="input-zip" placeholder="ZIP">
+                <input type="tel" id="phone" class="input-phone" placeholder="Phone">
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="isMedia">
+                  Media
+                </label>
+                <span class="privacy-badge">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                  100% Private
+                </span>
+              </div>
             </div>
           </div>
 
           <div class="section-eyebrow">About This Case</div>
-          <h1>${campaign.title}</h1>
           <p class="description">${campaign.summary}</p>
         </section>
       `;
