@@ -464,6 +464,22 @@
       overflow-y: auto;
       padding: 12px 14px;
       background: var(--bg);
+      transition: max-height 0.3s ease;
+    }
+
+    .template-content.expanded {
+      max-height: none;
+    }
+
+    .btn-expand {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-expand:hover {
+      background: var(--border-subtle);
+      color: var(--text);
     }
 
     /* Buttons */
@@ -1217,6 +1233,7 @@
             <div class="card">
               <div class="template-content" id="${id}-template"></div>
               <div class="card-footer">
+                <button class="btn btn-expand" onclick="toggleExpand('${id}-template', this)">Expand</button>
                 <button class="btn btn-primary" onclick="copyTemplate('${id}-template', this)">
                   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                   Copy
@@ -1242,6 +1259,7 @@
             <div class="card">
               <div class="template-content" id="${id}-template"></div>
               <div class="card-footer">
+                <button class="btn btn-expand" onclick="toggleExpand('${id}-template', this)">Expand</button>
                 <button class="btn btn-primary" onclick="copyTemplate('${id}-template', this)">
                   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                   Copy
@@ -1267,6 +1285,7 @@
             <div class="card">
               <div class="template-content" id="congress-template"></div>
               <div class="card-footer">
+                <button class="btn btn-expand" onclick="toggleExpand('congress-template', this)">Expand</button>
                 <button class="btn btn-primary" onclick="copyTemplate('congress-template', this)">
                   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                   Copy
@@ -1450,6 +1469,13 @@ ${getAddress(d)}`;
         const el = document.getElementById('congress-template');
         if (el) el.textContent = generateCongress();
       }
+    }
+
+    function toggleExpand(id, btn) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle('expanded');
+      btn.textContent = el.classList.contains('expanded') ? 'Collapse' : 'Expand';
     }
 
     async function copyTemplate(id, btn) {
