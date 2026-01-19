@@ -163,6 +163,24 @@
 
     .campaign-list { }
 
+    .campaign-group {
+      margin-bottom: 12px;
+    }
+
+    .campaign-group-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      margin-top: 8px;
+    }
+
+    .campaign-group:first-child .campaign-group-label {
+      margin-top: 0;
+    }
+
     .campaign-item {
       display: flex;
       align-items: center;
@@ -524,6 +542,17 @@
       flex-shrink: 0;
     }
 
+    .mobile-case-category {
+      font-size: 9px;
+      font-weight: 700;
+      color: #64748b;
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
     .mobile-case-title {
       font-size: 14px;
       font-weight: 600;
@@ -668,6 +697,7 @@
         "title": "Renee Good — ICE Agent Jonathan Ross",
         "date": "2026-01-17",
         "status": "active",
+        "category": "ICE",
         "summary": "Renee Good, U.S. citizen and mother of three, shot by ICE Agent Jonathan Ross in Minneapolis on January 7, 2026. Video shows she posed no threat. Federal authorities blocking state investigation.",
         "keywords": ["ice", "minneapolis", "shooting", "obstruction", "citizen", "jonathan ross", "video", "renee good", "agent ross"]
       },
@@ -676,6 +706,7 @@
         "title": "Geraldo Lunas Campos Case",
         "date": "2026-01-16",
         "status": "active",
+        "category": "ICE",
         "summary": "Geraldo Lunas Campos, 55, from Henrietta, NY, died January 3, 2026 at Camp East Montana ICE facility. Medical examiner: asphyxia from neck/chest compression (likely homicide). ICE claims he was 'disruptive in medication line' — died same day in segregation.",
         "keywords": ["ice", "detention", "texas", "el paso", "fort bliss", "homicide", "asphyxia", "geraldo lunas campos", "camp east montana", "henrietta", "rochester"]
       },
@@ -684,6 +715,7 @@
         "title": "Keith Porter — ICE Agent Brian Palacios",
         "date": "2026-01-13",
         "status": "active",
+        "category": "ICE",
         "summary": "Keith Porter Jr., 43, Black father of two, shot by off-duty ICE Agent Brian Palacios on New Year's Eve in Northridge, LA. DHS claims 'active shooter' — neighbors say agent never identified himself. No charges filed.",
         "keywords": ["ice", "los angeles", "shooting", "off-duty", "northridge", "lapd", "keith porter", "brian palacios"]
       }
@@ -706,6 +738,7 @@
           <a href="campaign.html?id=${c.id}" class="mobile-case-card">
             <div class="mobile-case-header">
               <span class="mobile-case-dot"></span>
+              <span class="mobile-case-category">${c.category || 'Other'}</span>
               <span class="mobile-case-title">${c.title}</span>
             </div>
             <div class="mobile-case-summary">${c.summary}</div>
@@ -723,16 +756,38 @@
         return;
       }
 
-      list.sort((a, b) => new Date(b.date) - new Date(a.date));
+      // Group by category
+      const grouped = {};
+      list.forEach(c => {
+        const cat = c.category || 'Other';
+        if (!grouped[cat]) grouped[cat] = [];
+        grouped[cat].push(c);
+      });
 
-      container.innerHTML = list.map(c => `
-        <a href="campaign.html?id=${c.id}" class="campaign-item">
-          <span class="campaign-item-dot ${c.status === 'active' ? 'active' : ''}"></span>
-          <div class="campaign-item-content">
-            <div class="campaign-item-title">${c.title}</div>
-            <div class="campaign-item-date">${formatDate(c.date)}</div>
-          </div>
-        </a>
+      // Sort each group by date
+      Object.values(grouped).forEach(arr => arr.sort((a, b) => new Date(b.date) - new Date(a.date)));
+
+      // Render grouped
+      const categoryOrder = ['ICE', 'FDA', 'FTC', 'HHS', 'Other'];
+      const sortedCategories = Object.keys(grouped).sort((a, b) => {
+        const ai = categoryOrder.indexOf(a);
+        const bi = categoryOrder.indexOf(b);
+        return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+      });
+
+      container.innerHTML = sortedCategories.map(cat => `
+        <div class="campaign-group">
+          <div class="campaign-group-label">${cat}</div>
+          ${grouped[cat].map(c => `
+            <a href="campaign.html?id=${c.id}" class="campaign-item">
+              <span class="campaign-item-dot ${c.status === 'active' ? 'active' : ''}"></span>
+              <div class="campaign-item-content">
+                <div class="campaign-item-title">${c.title}</div>
+                <div class="campaign-item-date">${formatDate(c.date)}</div>
+              </div>
+            </a>
+          `).join('')}
+        </div>
       `).join('');
     }
 
