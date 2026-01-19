@@ -1846,17 +1846,23 @@
     function getFormData() {
       return {
         name: document.getElementById('fullName')?.value || '[YOUR NAME]',
-        street: document.getElementById('street')?.value || '[ADDRESS]',
-        city: document.getElementById('city')?.value || '[CITY]',
-        state: document.getElementById('state')?.value || '[ST]',
-        zip: document.getElementById('zip')?.value || '[ZIP]',
+        street: document.getElementById('street')?.value || '',
+        city: document.getElementById('city')?.value || '',
+        state: document.getElementById('state')?.value || '',
+        zip: document.getElementById('zip')?.value || '',
         email: document.getElementById('email')?.value || '[EMAIL]',
         isMedia: document.getElementById('isMedia')?.checked || false
       };
     }
 
-    function getAddress(d) {
-      return `${d.name}\n${d.street}\n${d.city}, ${d.state} ${d.zip}\n${d.email}`;
+    function getSenderBlock(d) {
+      let lines = [d.name];
+      if (d.street) lines.push(d.street);
+      if (d.city || d.state || d.zip) {
+        lines.push([d.city, d.state].filter(Boolean).join(', ') + (d.zip ? ' ' + d.zip : ''));
+      }
+      lines.push(d.email);
+      return lines.filter(l => l && l.trim()).join('\n');
     }
 
     function getDate() {
@@ -1869,10 +1875,7 @@
         ? 'I am a representative of the news media as defined in 5 U.S.C. § 552(a)(4)(A)(ii)(II). I am gathering information on a matter of current public interest for publication.'
         : 'I am making this request as an individual and not for commercial use.';
 
-      return `${d.name}
-${d.street}
-${d.city}, ${d.state} ${d.zip}
-${d.email}
+      return `${getSenderBlock(d)}
 
 ${getDate()}
 
@@ -1916,10 +1919,7 @@ ${d.name}`;
 
     function generateComplaint(complaint) {
       const d = getFormData();
-      return `${d.name}
-${d.street}
-${d.city}, ${d.state} ${d.zip}
-${d.email}
+      return `${getSenderBlock(d)}
 
 ${getDate()}
 
@@ -1968,10 +1968,7 @@ ${d.name}`;
     function generateCongress() {
       const d = getFormData();
       const c = campaign.congress;
-      return `${d.name}
-${d.street}
-${d.city}, ${d.state} ${d.zip}
-${d.email}
+      return `${getSenderBlock(d)}
 
 ${getDate()}
 
