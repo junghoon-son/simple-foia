@@ -1,4 +1,4 @@
-# PermanentRecord
+# Simple FOIA
 
 **Create records that matter.**
 
@@ -6,7 +6,7 @@ A privacy-first tool for generating FOIA requests, Inspector General complaints,
 
 Built by **Jung Hoon Son, M.D.**
 
-[Buy me a coffee](https://buymeacoffee.com/junghoonson) ☕
+[Buy me a coffee](https://buymeacoffee.com/junghoonson)
 
 ---
 
@@ -18,13 +18,20 @@ Built by **Jung Hoon Son, M.D.**
 - **Mobile-friendly** — Responsive design for all devices
 - **localStorage persistence** — Your info and progress saved locally
 
+## Current Cases
+
+- **Alex Pretti** — Border Patrol shooting, Minneapolis (Jan 24, 2026)
+- **Renee Good** — ICE Agent Jonathan Ross, Minneapolis (Jan 7, 2026)
+- **Geraldo Lunas Campos** — ICE detention death, Camp East Montana (Jan 3, 2026)
+- **Keith Porter** — Off-duty ICE Agent Brian Palacios, Los Angeles (Dec 31, 2025)
+
 ## How It Works
 
 Users fill in their contact info once, then generate professional templates for:
 
 | Section | Purpose |
 |---------|---------|
-| **FOIA Requests** | Freedom of Information Act requests to federal agencies (FBI, DHS, ICE, DOJ) with proper legal citations |
+| **FOIA Requests** | Freedom of Information Act requests to federal agencies (FBI, DHS, ICE, CBP, DOJ) with proper legal citations |
 | **IG Complaints** | Formal complaints to Inspector General offices with statutory references |
 | **Congress Letters** | Letters to representatives requesting oversight |
 
@@ -33,21 +40,23 @@ Templates auto-fill with user info and can be copied or emailed directly.
 ## File Structure
 
 ```
-├── index.html      # Landing page with case list
-├── campaign.html   # Campaign detail page with all templates
-└── README.md
+index.html      # Landing page with case list
+campaign.html   # Case detail page (HTML structure)
+styles.css      # All CSS styles
+campaigns.js    # Case data (edit this to add new cases)
+app.js          # Application logic and template generation
+README.md       # This file
+CLAUDE.md       # AI assistant documentation
 ```
 
-All campaign data is embedded directly in the HTML files — no JSON fetches, no build step.
+## Adding a New Case
 
-## Adding a New Campaign
-
-Edit the `allCampaigns` object in `campaign.html` (and `campaigns` in `index.html` for the sidebar):
+Edit `campaigns.js` to add case data, and `index.html` to add it to the landing page sidebar:
 
 ```javascript
-"your-campaign-id": {
-  "id": "your-campaign-id",
-  "title": "Campaign Title",
+"your-case-id": {
+  "id": "your-case-id",
+  "title": "Case Title",
   "date": "2026-01-01",
   "status": "active",
   "summary": "Brief description of the case.",
@@ -102,8 +111,8 @@ Static files only. Deploy anywhere:
 ## Fork & Customize
 
 1. Fork this repo
-2. Edit campaign data in `campaign.html` and `index.html`
-3. Update branding (logo text in `.logo-main`)
+2. Edit case data in `campaigns.js` and `index.html`
+3. Update branding (logo text in `.logo-main` in styles.css)
 4. Deploy
 
 No build process. No npm. No framework. Just HTML.
