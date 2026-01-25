@@ -977,32 +977,32 @@ section.completed .section-eyebrow::after {
     margin-top: 8px;
   }
 
-  /* Info form mobile - stack vertically for visibility */
+  /* Info form mobile - compact horizontal layout */
   .info-form {
-    margin: 0 -16px 24px -16px;
+    margin: 0 -16px 20px -16px;
     border-radius: 0;
     padding: 12px 16px;
   }
 
   .info-form-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 8px;
+    align-items: center;
   }
 
   .info-form input {
-    padding: 8px 10px;
-    font-size: 13px;
-    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 6px;
   }
 
-  .info-form .input-name,
-  .info-form .input-email,
-  .info-form .input-street { grid-column: span 2; }
-
-  .info-form .input-city { grid-column: span 1; }
-  .info-form .input-state { width: 100%; }
-  .info-form .input-zip { width: 100%; }
+  .info-form .input-name { width: calc(50% - 4px); }
+  .info-form .input-email { width: calc(50% - 4px); }
+  .info-form .input-street { width: 100%; }
+  .info-form .input-city { width: calc(50% - 4px); }
+  .info-form .input-state { width: 60px; }
+  .info-form .input-zip { width: calc(50% - 68px); }
 
   .info-form .privacy-badge {
     display: none;
@@ -1010,8 +1010,7 @@ section.completed .section-eyebrow::after {
 
   .info-form .checkbox-inline {
     font-size: 12px;
-    grid-column: span 2;
-    justify-self: start;
+    margin-left: auto;
   }
 
   /* Cards mobile */
