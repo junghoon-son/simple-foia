@@ -23,7 +23,6 @@ function loadCampaign() {
 
   document.title = `${campaign.title} - FOIA Generator`;
   document.getElementById('mobile-title').textContent = campaign.title;
-  document.getElementById('toc-label').textContent = campaign.title;
   document.getElementById('toc-section').style.display = 'block';
 
   renderTOC();
