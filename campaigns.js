@@ -50,7 +50,8 @@ const allCampaigns = {
           "All video footage in DHS possession showing the shooting and events leading up to it.",
           "All records related to the Temporary Restraining Order issued by U.S. District Judge Eric Tostrud barring DHS from altering or destroying evidence.",
           "All communications between DHS, CBP, and Minnesota BCA regarding crime scene access and the BCA's signed search warrant.",
-          "All records related to DHS policies on cooperation with state investigators in federal agent shootings."
+          "All records related to DHS policies on cooperation with state investigators in federal agent shootings.",
+          "The autopsy report, medical examiner findings, and all forensic reports related to Alex Pretti's death."
         ]
       },
       "ice": {
@@ -224,7 +225,8 @@ const allCampaigns = {
           "All communications between DHS leadership and White House regarding this incident and public messaging.",
           "All video footage in DHS possession, including Agent Ross's cellphone video.",
           "All communications between DHS, ICE, FBI, and DOJ regarding federal jurisdiction and exclusion of Minnesota BCA.",
-          "All records related to ICE Agent Jonathan Ross: employment records, training, prior complaints, and current duty status."
+          "All records related to ICE Agent Jonathan Ross: employment records, training, prior complaints, and current duty status.",
+          "The autopsy report, medical examiner findings, and all forensic reports related to Renee Good's death."
         ]
       },
       "ice": {
@@ -520,12 +522,13 @@ const allCampaigns = {
         "portal": "https://www.dhs.gov/foia",
         "address": "Department of Homeland Security\nPrivacy Office, Mail Stop 0655\n2707 Martin Luther King Jr. Ave. SE\nWashington, D.C. 20528-0655",
         "requests": [
-          "All records related to the shooting death of Keith Porter Jr. on December 31, 2025, in Northridge, Los Angeles, by an off-duty ICE agent.",
-          "All records related to the ICE agent involved, including employment records, training, prior complaints, disciplinary actions, and use-of-force history.",
+          "All records related to the shooting death of Keith Porter Jr. on December 31, 2025, in Northridge, Los Angeles, by off-duty ICE Agent Brian Palacios.",
+          "All records related to ICE Agent Brian Palacios, including employment records, training, prior complaints, disciplinary actions, and use-of-force history.",
           "All policies governing off-duty conduct of ICE agents, including use of service weapons.",
           "All communications between DHS, ICE, and LAPD regarding this incident.",
           "All records from ICE's Office of Professional Responsibility investigation.",
-          "All public statements made by DHS officials regarding this incident."
+          "All public statements made by DHS officials regarding this incident.",
+          "The autopsy report, medical examiner findings, and all forensic reports related to Keith Porter Jr.'s death."
         ]
       },
       "ice": {
@@ -536,12 +539,12 @@ const allCampaigns = {
         "portal": "https://www.ice.gov/foia",
         "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
         "requests": [
-          "All records related to the ICE agent involved in the shooting death of Keith Porter Jr. on December 31, 2025.",
-          "All employment records, personnel files, training records, prior complaints, and use-of-force history for this agent.",
+          "All records related to ICE Agent Brian Palacios, who shot and killed Keith Porter Jr. on December 31, 2025.",
+          "All employment records, personnel files, training records, prior complaints, and use-of-force history for Agent Brian Palacios.",
           "All records from the Office of Professional Responsibility investigation into this shooting.",
           "All policies governing off-duty use of ICE-authorized firearms.",
           "All policies governing ICE agent response to non-immigration-related incidents.",
-          "All records of the agent's current duty status following this incident."
+          "All records of Agent Palacios's current duty status following this incident."
         ]
       },
       "doj": {
@@ -555,7 +558,8 @@ const allCampaigns = {
           "All records related to DOJ involvement in the investigation of Keith Porter Jr.'s death.",
           "All records related to civil rights review of this shooting.",
           "All communications between DOJ, DHS, ICE, and local authorities regarding this case.",
-          "All records related to DOJ policies on investigating off-duty federal law enforcement shootings."
+          "All records related to DOJ policies on investigating off-duty federal law enforcement shootings.",
+          "The autopsy report, medical examiner findings, and all forensic reports related to Keith Porter Jr.'s death."
         ]
       }
     },

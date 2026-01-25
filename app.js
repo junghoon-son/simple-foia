@@ -393,6 +393,7 @@ LEGAL BASIS FOR COMPLAINT
 These allegations implicate potential violations of:
 - 18 U.S.C. § 242 (Deprivation of Rights Under Color of Law)
 - 18 U.S.C. § 1001 (False Statements)
+- 18 U.S.C. § 1512 (Tampering with a Witness, Victim, or Informant)
 - 18 U.S.C. § 1519 (Destruction, Alteration, or Falsification of Records)
 - Agency policies governing use of force and conduct of personnel
 
