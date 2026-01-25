@@ -58,7 +58,7 @@ const allCampaigns = {
         "name": "ICE",
         "fullName": "Immigration and Customs Enforcement",
         "description": "ICE agents were present during the operation; records of coordination.",
-        "email": null,
+        "email": "ice-foia@ice.dhs.gov",
         "portal": "https://www.foia.gov/",
         "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
         "requests": [
@@ -233,7 +233,7 @@ const allCampaigns = {
         "name": "ICE",
         "fullName": "Immigration and Customs Enforcement",
         "description": "Agent Jonathan Ross records, use-of-force history, cellphone video.",
-        "email": null,
+        "email": "ice-foia@ice.dhs.gov",
         "portal": "https://www.foia.gov/",
         "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
         "requests": [
@@ -371,7 +371,7 @@ const allCampaigns = {
         "name": "ICE",
         "fullName": "Immigration and Customs Enforcement",
         "description": "Detention records, guard conduct, and use-of-force reports.",
-        "email": null,
+        "email": "ice-foia@ice.dhs.gov",
         "portal": "https://www.foia.gov/",
         "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
         "requests": [
@@ -535,7 +535,7 @@ const allCampaigns = {
         "name": "ICE",
         "fullName": "Immigration and Customs Enforcement",
         "description": "Agent records, training, and internal investigation.",
-        "email": null,
+        "email": "ice-foia@ice.dhs.gov",
         "portal": "https://www.foia.gov/",
         "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
         "requests": [
