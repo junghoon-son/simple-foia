@@ -150,7 +150,7 @@ function renderMain() {
           </label>
           <div class="section-header-content">
             <div class="section-eyebrow">FOIA Request</div>
-            <h2>${agency.fullName}</h2>
+            <h2>${agency.fullName} ${agency.email ? '<span class="submit-badge submit-email">Email</span>' : '<span class="submit-badge submit-portal">Portal</span>'}</h2>
             <p class="description">${agency.description}</p>
           </div>
         </div>
