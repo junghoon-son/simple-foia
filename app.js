@@ -93,30 +93,28 @@ function renderTOC() {
 function renderMain() {
   let html = `
     <section id="info">
-      <div class="sticky-header">
-        <div class="sticky-case-name">
-          <h1>${campaign.title}</h1>
-          ${campaign.status === 'active' ? '<span class="status-badge">Active</span>' : ''}
+      <div class="sticky-case-name">
+        <h1>${campaign.title}</h1>
+        ${campaign.status === 'active' ? '<span class="status-badge">Active</span>' : ''}
+      </div>
+      <div class="info-form">
+        <div class="info-form-inner">
+          <input type="text" id="fullName" class="input-name" placeholder="Full Name *" required>
+          <input type="email" id="email" class="input-email" placeholder="Email *" required>
+          <input type="text" id="street" class="input-street" placeholder="Address (optional)">
+          <input type="text" id="city" class="input-city" placeholder="City">
+          <input type="text" id="state" class="input-state" placeholder="ST" maxlength="2">
+          <input type="text" id="zip" class="input-zip" placeholder="ZIP">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="isMedia">
+            Media
+          </label>
+          <span class="privacy-badge">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            100% Private
+          </span>
         </div>
-        <div class="sticky-form">
-          <div class="sticky-form-inner">
-            <input type="text" id="fullName" class="input-name" placeholder="Full Name *" required>
-            <input type="email" id="email" class="input-email" placeholder="Email *" required>
-            <input type="text" id="street" class="input-street" placeholder="Address (optional)">
-            <input type="text" id="city" class="input-city" placeholder="City">
-            <input type="text" id="state" class="input-state" placeholder="ST" maxlength="2">
-            <input type="text" id="zip" class="input-zip" placeholder="ZIP">
-            <label class="checkbox-inline">
-              <input type="checkbox" id="isMedia">
-              Media
-            </label>
-            <span class="privacy-badge">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-              100% Private
-            </span>
-          </div>
-          <div class="form-hint">* Required. Address optional. <strong>Nothing sent — copy/paste only.</strong></div>
-        </div>
+        <div class="form-hint">* Required. Address optional. <strong>Nothing sent — copy/paste only.</strong></div>
       </div>
 
       <div class="section-eyebrow">About This Case</div>
@@ -457,8 +455,7 @@ Thank you for your service and attention to this matter.
 
 Respectfully,
 
-${d.name}
-Constituent, ${d.city}, ${d.state}`;
+${d.name}${d.city || d.state ? `\nConstituent, ${[d.city, d.state].filter(Boolean).join(', ')}` : ''}`;
 }
 
 function updateTemplates() {
