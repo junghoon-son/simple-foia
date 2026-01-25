@@ -960,12 +960,9 @@ section.completed .section-eyebrow::after {
     padding: 56px 16px 24px;
   }
 
-  /* Sticky case name mobile - pull up into section padding */
+  /* Hide sticky case name on mobile - title already in mobile header */
   .sticky-case-name {
-    margin: -44px -16px 12px -16px;
-    border-radius: 0;
-    top: 52px;
-    padding: 10px 16px;
+    display: none;
   }
 
   .sticky-case-name h1 {
