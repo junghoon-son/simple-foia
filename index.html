@@ -491,22 +491,21 @@
       z-index: 99;
     }
 
-    /* Mobile cases */
-    .mobile-cases {
-      display: none;
-      margin-top: 24px;
+    /* Cases section */
+    .cases-section {
+      margin: 20px 0;
     }
 
-    .mobile-cases-label {
+    .cases-label {
       font-size: 10px;
       font-weight: 600;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
-    .mobile-case-card {
+    .case-card {
       display: block;
       padding: 14px 16px;
       background: var(--surface);
@@ -518,23 +517,23 @@
       transition: all 0.15s;
     }
 
-    .mobile-case-card:hover {
+    .case-card:hover {
       border-color: var(--accent);
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
 
-    .mobile-case-card:active {
+    .case-card:active {
       transform: scale(0.98);
     }
 
-    .mobile-case-header {
+    .case-header {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 6px;
     }
 
-    .mobile-case-dot {
+    .case-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
@@ -542,7 +541,7 @@
       flex-shrink: 0;
     }
 
-    .mobile-case-category {
+    .case-category {
       font-size: 9px;
       font-weight: 700;
       color: #64748b;
@@ -553,13 +552,13 @@
       letter-spacing: 0.02em;
     }
 
-    .mobile-case-title {
+    .case-title {
       font-size: 14px;
       font-weight: 600;
       color: var(--text);
     }
 
-    .mobile-case-summary {
+    .case-summary {
       font-size: 12px;
       color: var(--text-secondary);
       line-height: 1.5;
@@ -569,7 +568,7 @@
       overflow: hidden;
     }
 
-    .mobile-case-arrow {
+    .case-arrow {
       float: right;
       color: var(--text-muted);
       font-size: 18px;
@@ -582,7 +581,6 @@
       .main { margin-left: 0; padding: 68px 20px 32px; align-items: flex-start; }
       .mobile-header { display: flex; }
       .overlay.open { display: block; }
-      .mobile-cases { display: block; }
     }
   </style>
 </head>
@@ -633,52 +631,25 @@
 
     <main class="main">
       <div class="welcome">
-        <div style="margin-bottom: 20px;">
-          <div style="font-size: 32px; font-weight: 800; letter-spacing: -1px; color: var(--text);">Simple<span style="color: #dc2626;">FOIA</span></div>
+        <div style="margin-bottom: 12px;">
+          <div style="font-size: 28px; font-weight: 800; letter-spacing: -1px; color: var(--text);">Simple<span style="color: #dc2626;">FOIA</span></div>
         </div>
 
-        <h1>Use FOIA to create records that matter</h1>
-        <p>Generate FOIA requests and official complaints. Every submission creates a federal record that can't be easily deleted.</p>
+        <p style="margin-bottom: 16px;">Generate FOIA requests that create federal records. <a href="#" onclick="document.querySelector('.foia-explainer').open=true; return false;" style="color: var(--text-secondary);">What is FOIA? →</a></p>
 
-        <details class="foia-explainer">
+        <details class="foia-explainer" style="margin-bottom: 16px;">
           <summary>What is FOIA?</summary>
           <div class="foia-explainer-content">
-            <p><strong>FOIA</strong> (Freedom of Information Act) is a law that says the government has to show you its records if you ask.</p>
-            <p>Think of it like this: the government works for us, and we have a right to see what they're doing. When you send a FOIA request, you're saying "show me the documents about X."</p>
-            <p><strong>Why it matters:</strong> Your request itself becomes a federal record. Even if they don't give you everything, they have to log that you asked. That paper trail can't be easily deleted — and it shows someone was paying attention.</p>
+            <p><strong>FOIA</strong> (Freedom of Information Act) lets you request government records. Your request itself becomes a federal record that can't be easily deleted.</p>
           </div>
         </details>
 
-        <div class="welcome-steps">
-          <div class="welcome-step">
-            <div class="welcome-step-num">1</div>
-            <div class="welcome-step-text"><strong>Select a case</strong> from the sidebar</div>
-          </div>
-          <div class="welcome-step">
-            <div class="welcome-step-num">2</div>
-            <div class="welcome-step-text"><strong>Enter your info</strong> — auto-fills all templates</div>
-          </div>
-          <div class="welcome-step">
-            <div class="welcome-step-num">3</div>
-            <div class="welcome-step-text"><strong>Copy or email</strong> to submit</div>
-          </div>
-          <div class="welcome-step">
-            <div class="welcome-step-num">4</div>
-            <div class="welcome-step-text"><strong>Save confirmations</strong> as proof</div>
-          </div>
-        </div>
-
-        <div class="notice" style="background: #fef3c7; color: #92400e; border-color: #fcd34d; margin-bottom: 12px;">
-          <svg fill="none" stroke="#d97706" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <span><strong>Records persist across administrations.</strong> If the current administration ignores these requests, the next one can act on them. Your paper trail survives elections.</span>
-        </div>
+        <div class="cases-section" id="cases-section"></div>
 
         <div class="notice" style="background: #0f172a; color: #e2e8f0; border-color: #334155;">
           <svg fill="none" stroke="#22c55e" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-          <span><strong style="color: #22c55e;">100% Private:</strong> Static HTML — no backend, no database. Everything runs in your browser. No personal data collected. Hosted free on Cloudflare (basic web traffic stats only). <a href="https://github.com/junghoon-son/simple-foia" target="_blank" style="color: #94a3b8;">View source code →</a></span>
+          <span><strong style="color: #22c55e;">100% Private:</strong> Static HTML — no backend. Your data stays in your browser. <a href="https://github.com/junghoon-son/simple-foia" target="_blank" style="color: #94a3b8;">Source code →</a></span>
         </div>
-
-        <div class="mobile-cases" id="mobile-cases"></div>
 
         <div class="who-am-i">
           <div class="who-am-i-label">Who made this?</div>
@@ -731,26 +702,26 @@
 
     function loadCampaigns() {
       renderCampaigns(Object.values(campaigns));
-      renderMobileCases(Object.values(campaigns));
+      renderCasesSection(Object.values(campaigns));
     }
 
-    function renderMobileCases(list) {
-      const container = document.getElementById('mobile-cases');
+    function renderCasesSection(list) {
+      const container = document.getElementById('cases-section');
       if (!container) return;
 
       list.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       container.innerHTML = `
-        <div class="mobile-cases-label">Active Cases</div>
+        <div class="cases-label">Select a Case</div>
         ${list.map(c => `
-          <a href="campaign.html?id=${c.id}" class="mobile-case-card">
-            <div class="mobile-case-header">
-              <span class="mobile-case-dot"></span>
-              <span class="mobile-case-category">${c.category || 'Other'}</span>
-              <span class="mobile-case-title">${c.title}</span>
+          <a href="campaign.html?id=${c.id}" class="case-card">
+            <div class="case-header">
+              <span class="case-dot"></span>
+              <span class="case-category">${c.category || 'Other'}</span>
             </div>
-            <div class="mobile-case-summary">${c.summary}</div>
-            <span class="mobile-case-arrow">→</span>
+            <div class="case-title">${c.title}</div>
+            <div class="case-summary">${c.summary}</div>
+            <span class="case-arrow">→</span>
           </a>
         `).join('')}
       `;
