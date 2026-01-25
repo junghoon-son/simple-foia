@@ -245,8 +245,8 @@ body {
 
 .sidebar-divider {
   height: 1px;
-  background: var(--border);
-  margin: 8px 12px;
+  background: transparent;
+  margin: 4px 12px;
 }
 
 .campaign-list {
@@ -300,11 +300,10 @@ body {
 .toc-group-label {
   font-size: 10px;
   font-weight: 700;
-  color: var(--text-secondary);
+  color: var(--text-muted);
   padding: 8px 8px 4px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--border);
   margin-bottom: 4px;
 }
 
