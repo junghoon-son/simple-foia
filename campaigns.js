@@ -51,6 +51,22 @@ const allCampaigns = {
           "All legal memoranda regarding federal jurisdiction and state access to evidence in federal agent shootings."
         ]
       },
+      "fbi": {
+        "name": "FBI",
+        "fullName": "Federal Bureau of Investigation",
+        "description": "Federal investigation into the shooting.",
+        "email": null,
+        "portal": "https://efoia.fbi.gov/",
+        "address": "Federal Bureau of Investigation\nAttn: FOIA/PA Request\nRecord/Information Dissemination Section\n170 Marcel Drive\nWinchester, VA 22602",
+        "requests": [
+          "All records related to the fatal shooting of Alex Jeffrey Pretti on January 24, 2026, in Minneapolis.",
+          "All video footage collected or analyzed, including footage showing what Pretti was holding when shot.",
+          "All communications between FBI and Minnesota BCA regarding investigation access and jurisdiction.",
+          "All witness statements and investigative interviews conducted.",
+          "All evidence collected: firearms, ammunition casings, cell phones, forensic reports, and autopsy reports.",
+          "All records related to the discrepancy between federal claims (Pretti approached with a gun) and video evidence (Pretti was holding his phone)."
+        ]
+      },
       "cbp": {
         "name": "CBP",
         "fullName": "U.S. Customs and Border Protection",
@@ -84,22 +100,6 @@ const allCampaigns = {
           "All communications between DHS, CBP, and Minnesota BCA regarding crime scene access and the BCA's signed search warrant.",
           "All records related to DHS policies on cooperation with state investigators in federal agent shootings.",
           "The autopsy report, medical examiner findings, and all forensic reports related to Alex Pretti's death."
-        ]
-      },
-      "fbi": {
-        "name": "FBI",
-        "fullName": "Federal Bureau of Investigation",
-        "description": "Federal investigation into the shooting.",
-        "email": null,
-        "portal": "https://efoia.fbi.gov/",
-        "address": "Federal Bureau of Investigation\nAttn: FOIA/PA Request\nRecord/Information Dissemination Section\n170 Marcel Drive\nWinchester, VA 22602",
-        "requests": [
-          "All records related to the fatal shooting of Alex Jeffrey Pretti on January 24, 2026, in Minneapolis.",
-          "All video footage collected or analyzed, including footage showing what Pretti was holding when shot.",
-          "All communications between FBI and Minnesota BCA regarding investigation access and jurisdiction.",
-          "All witness statements and investigative interviews conducted.",
-          "All evidence collected: firearms, ammunition casings, cell phones, forensic reports, and autopsy reports.",
-          "All records related to the discrepancy between federal claims (Pretti approached with a gun) and video evidence (Pretti was holding his phone)."
         ]
       }
     },
@@ -383,6 +383,22 @@ const allCampaigns = {
           "All records related to DOJ guidance on investigating deaths in federal custody where the medical examiner's findings contradict agency statements."
         ]
       },
+      "fbi": {
+        "name": "FBI",
+        "fullName": "Federal Bureau of Investigation",
+        "description": "FBI investigation into the death.",
+        "email": null,
+        "portal": "https://efoia.fbi.gov/",
+        "address": "Federal Bureau of Investigation\nAttn: FOIA/PA Request\nRecord/Information Dissemination Section\n170 Marcel Drive\nWinchester, VA 22602",
+        "requests": [
+          "All records related to any FBI investigation into the death of Geraldo Lunas Campos, age 55, on January 3, 2026, at Camp East Montana ICE detention facility near El Paso, Texas.",
+          "All records related to the El Paso County Medical Examiner's determination that the cause of death was asphyxia due to neck and chest compression, and the expected ruling of homicide.",
+          "All communications between FBI, DHS, ICE, El Paso County Medical Examiner, and other agencies regarding this death.",
+          "All witness statements collected, including from detainees present during the medication line incident and segregation placement.",
+          "All records related to potential civil rights violations under 18 U.S.C. § 242 (Deprivation of Rights Under Color of Law).",
+          "All records related to the discrepancy between DHS's initial claim of a 'suicide attempt' and the medical examiner's findings of asphyxia from compression."
+        ]
+      },
       "dhs": {
         "name": "DHS",
         "fullName": "Department of Homeland Security",
@@ -399,22 +415,6 @@ const allCampaigns = {
           "All records related to Camp East Montana facility: contracts with Acquisition Logistics LLC, oversight reports, inspection records, staffing records, and prior complaints or incidents.",
           "All communications between DHS, ICE, and Acquisition Logistics LLC regarding Lunas Campos's death and the subsequent investigation.",
           "All records related to the deportation or transfer of witnesses to this death, including any detainees who were in the medication line or segregation area on January 3, 2026."
-        ]
-      },
-      "fbi": {
-        "name": "FBI",
-        "fullName": "Federal Bureau of Investigation",
-        "description": "FBI investigation into the death.",
-        "email": null,
-        "portal": "https://efoia.fbi.gov/",
-        "address": "Federal Bureau of Investigation\nAttn: FOIA/PA Request\nRecord/Information Dissemination Section\n170 Marcel Drive\nWinchester, VA 22602",
-        "requests": [
-          "All records related to any FBI investigation into the death of Geraldo Lunas Campos, age 55, on January 3, 2026, at Camp East Montana ICE detention facility near El Paso, Texas.",
-          "All records related to the El Paso County Medical Examiner's determination that the cause of death was asphyxia due to neck and chest compression, and the expected ruling of homicide.",
-          "All communications between FBI, DHS, ICE, El Paso County Medical Examiner, and other agencies regarding this death.",
-          "All witness statements collected, including from detainees present during the medication line incident and segregation placement.",
-          "All records related to potential civil rights violations under 18 U.S.C. § 242 (Deprivation of Rights Under Color of Law).",
-          "All records related to the discrepancy between DHS's initial claim of a 'suicide attempt' and the medical examiner's findings of asphyxia from compression."
         ]
       }
     },
