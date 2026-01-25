@@ -118,7 +118,10 @@ function renderMain() {
       </div>
 
       <div class="section-eyebrow">About This Case</div>
-      <p class="description">${campaign.summary}</p>
+      <div class="case-intro">
+        ${campaign.image ? `<img src="${campaign.image}" alt="${campaign.title}" class="case-image">` : ''}
+        <p class="description">${campaign.summary}</p>
+      </div>
       ${campaign.sources ? `
       <div class="sources">
         <div class="sources-label">News Coverage</div>

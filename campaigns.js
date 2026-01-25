@@ -7,6 +7,7 @@ const allCampaigns = {
     "title": "Alex Pretti Case — Border Patrol Shooting",
     "date": "2026-01-25",
     "status": "active",
+    "image": "images/alex-pretti.jpg",
     "summary": "Alex Pretti, 37, ICU nurse and U.S. citizen, shot and killed by Border Patrol agents in Minneapolis on January 24, 2026. Videos show he was holding a phone, not a gun. DHS claims he wanted to 'massacre law enforcement.' Federal authorities blocking state investigation—again.",
     "keywords": ["border patrol", "cbp", "minneapolis", "shooting", "obstruction", "citizen", "alex pretti", "icu nurse", "va hospital", "phone", "video"],
     "sources": [
@@ -182,6 +183,7 @@ const allCampaigns = {
     "title": "Renee Good Case — ICE Agent Jonathan Ross",
     "date": "2026-01-17",
     "status": "active",
+    "image": "images/renee-good.jpg",
     "summary": "Renee Good, U.S. citizen and mother of three, shot by ICE Agent Jonathan Ross in Minneapolis on January 7, 2026. Video shows she posed no threat. Federal authorities blocking state investigation.",
     "keywords": ["ice", "minneapolis", "shooting", "obstruction", "citizen", "jonathan ross", "video", "renee good", "agent ross"],
     "sources": [
@@ -333,6 +335,7 @@ const allCampaigns = {
     "title": "Geraldo Lunas Campos Case",
     "date": "2026-01-16",
     "status": "active",
+    "image": "images/geraldo-lunas-campos.jpg",
     "summary": "Geraldo Lunas Campos, 55, Cuban immigrant from Henrietta, NY, died January 3, 2026 at Camp East Montana ICE facility near El Paso, TX. Medical examiner ruled asphyxia from neck/chest compression — likely homicide. ICE claims he 'became disruptive while in line for medication' and was placed in segregation.",
     "keywords": ["ice", "detention", "texas", "el paso", "fort bliss", "homicide", "asphyxia", "geraldo lunas campos", "camp east montana", "henrietta", "rochester"],
     "sources": [
@@ -497,6 +500,7 @@ const allCampaigns = {
     "title": "Keith Porter Case — ICE Agent Brian Palacios",
     "date": "2026-01-13",
     "status": "active",
+    "image": "images/keith-porter.jpg",
     "summary": "Keith Porter Jr., 43, Black father of two, shot and killed by off-duty ICE Agent Brian Palacios on New Year's Eve in Northridge, LA. DHS claims 'active shooter' — neighbors say agent never identified himself. No bodycam. No charges filed.",
     "keywords": ["ice", "los angeles", "shooting", "off-duty", "northridge", "lapd", "keith porter", "brian palacios"],
     "sources": [
