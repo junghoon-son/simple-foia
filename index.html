@@ -610,11 +610,11 @@
       <div class="sidebar-divider"></div>
 
       <div class="sidebar-search">
-        <input type="text" id="search" placeholder="Search campaigns..." autocomplete="off">
+        <input type="text" id="search" placeholder="Search cases..." autocomplete="off">
       </div>
 
       <div class="sidebar-section">
-        <div class="sidebar-section-label">Campaigns</div>
+        <div class="sidebar-section-label">Cases</div>
         <div class="campaign-list" id="campaign-list">
           <div class="empty-state">Loading...</div>
         </div>
@@ -653,7 +653,7 @@
         <div class="welcome-steps">
           <div class="welcome-step">
             <div class="welcome-step-num">1</div>
-            <div class="welcome-step-text"><strong>Select a campaign</strong> from the sidebar</div>
+            <div class="welcome-step-text"><strong>Select a case</strong> from the sidebar</div>
           </div>
           <div class="welcome-step">
             <div class="welcome-step-num">2</div>
@@ -761,7 +761,7 @@
       const container = document.getElementById('campaign-list');
 
       if (list.length === 0) {
-        container.innerHTML = '<div class="empty-state">No campaigns found.</div>';
+        container.innerHTML = '<div class="empty-state">No cases found.</div>';
         return;
       }
 

@@ -11,13 +11,13 @@ function loadCampaign() {
   renderCampaignList();
 
   if (!currentId) {
-    document.getElementById('main').innerHTML = '<div class="notice notice-warning">Select a campaign from the sidebar.</div>';
+    document.getElementById('main').innerHTML = '<div class="notice notice-warning">Select a case from the sidebar.</div>';
     return;
   }
 
   campaign = allCampaigns[currentId];
   if (!campaign) {
-    document.getElementById('main').innerHTML = '<div class="notice notice-warning">Campaign not found.</div>';
+    document.getElementById('main').innerHTML = '<div class="notice notice-warning">Case not found.</div>';
     return;
   }
 
@@ -621,7 +621,7 @@ document.getElementById('search').addEventListener('input', e => {
   });
   const container = document.getElementById('campaign-list');
   if (filtered.length === 0) {
-    container.innerHTML = '<div style="padding: 12px; color: var(--text-muted); font-size: 12px;">No campaigns found.</div>';
+    container.innerHTML = '<div style="padding: 12px; color: var(--text-muted); font-size: 12px;">No cases found.</div>';
     return;
   }
   container.innerHTML = filtered.map(c => `
