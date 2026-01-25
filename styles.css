@@ -4,10 +4,10 @@
   --bg: #fafafa;
   --surface: #ffffff;
   --text: #0f0f0f;
-  --text-secondary: #71717a;
-  --text-muted: #a1a1aa;
-  --border: #e4e4e7;
-  --border-subtle: #f4f4f5;
+  --text-secondary: #3f3f46;
+  --text-muted: #71717a;
+  --border: #d4d4d8;
+  --border-subtle: #e4e4e7;
   --accent: #18181b;
   --accent-hover: #27272a;
   --ring: rgba(0,0,0,0.05);
@@ -229,7 +229,7 @@ body {
 .sidebar-section {
   padding: 8px;
   margin: 8px 12px;
-  background: #f8fafc;
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: 8px;
 }
@@ -347,14 +347,14 @@ section.active-section {
   padding: 16px;
   border-top: 1px solid var(--border);
   font-size: 11px;
-  color: var(--text-secondary);
-  background: #f8fafc;
+  color: var(--text);
+  background: #ffffff;
 }
 
 .sidebar-footer a {
-  color: var(--text);
+  color: var(--accent);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .sidebar-footer a:hover { text-decoration: underline; }
