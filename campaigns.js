@@ -24,7 +24,7 @@ const allCampaigns = {
         "fullName": "U.S. Customs and Border Protection",
         "description": "Border Patrol agents fired the shots; Commander Bovino made false public statements.",
         "email": null,
-        "portal": "https://www.securerelease.us/",
+        "portal": "https://www.foia.gov/",
         "address": "U.S. Customs and Border Protection\nFOIA Division\n90 K Street NE, 9th Floor\nWashington, D.C. 20229",
         "requests": [
           "All records related to the fatal shooting of Alex Jeffrey Pretti, a U.S. citizen, by Border Patrol agents on January 24, 2026, in Minneapolis, Minnesota, at East 26th Street and Nicollet Avenue.",
@@ -41,7 +41,7 @@ const allCampaigns = {
         "fullName": "Department of Homeland Security",
         "description": "Secretary Noem made unsubstantiated accusations; DHS blocking state investigation.",
         "email": null,
-        "portal": "https://www.securerelease.us/",
+        "portal": "https://www.foia.gov/",
         "address": "Department of Homeland Security\nPrivacy Office, Mail Stop 0655\n2707 Martin Luther King Jr. Ave. SE\nWashington, D.C. 20528-0655",
         "requests": [
           "All records related to the fatal shooting of Alex Jeffrey Pretti by federal agents on January 24, 2026, in Minneapolis.",
@@ -59,7 +59,7 @@ const allCampaigns = {
         "fullName": "Immigration and Customs Enforcement",
         "description": "ICE agents were present during the operation; records of coordination.",
         "email": null,
-        "portal": "https://www.securerelease.us/",
+        "portal": "https://www.foia.gov/",
         "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
         "requests": [
           "All records related to the January 24, 2026 immigration enforcement operation in Minneapolis during which Alex Pretti was killed.",
@@ -217,7 +217,7 @@ const allCampaigns = {
         "fullName": "Department of Homeland Security",
         "description": "Secretary Noem made false public statements; blocking state investigation.",
         "email": null,
-        "portal": "https://www.securerelease.us/",
+        "portal": "https://www.foia.gov/",
         "address": "Department of Homeland Security\nPrivacy Office, Mail Stop 0655\n2707 Martin Luther King Jr. Ave. SE\nWashington, D.C. 20528-0655",
         "requests": [
           "All records related to the ICE enforcement operation on January 7, 2026, in Minneapolis, during which Renee Nicole Good was killed.",
@@ -234,7 +234,7 @@ const allCampaigns = {
         "fullName": "Immigration and Customs Enforcement",
         "description": "Agent Jonathan Ross records, use-of-force history, cellphone video.",
         "email": null,
-        "portal": "https://www.securerelease.us/",
+        "portal": "https://www.foia.gov/",
         "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
         "requests": [
           "All records related to ICE Agent Jonathan Ross: complete personnel file, employment history (Border Patrol 2007-2015, ICE 2015-present), training records, firearms instructor certifications.",
@@ -354,7 +354,7 @@ const allCampaigns = {
         "fullName": "Department of Homeland Security",
         "description": "Facility oversight, contractor management, and incident records.",
         "email": null,
-        "portal": "https://www.securerelease.us/",
+        "portal": "https://www.foia.gov/",
         "address": "Department of Homeland Security\nPrivacy Office, Mail Stop 0655\n2707 Martin Luther King Jr. Ave. SE\nWashington, D.C. 20528-0655",
         "requests": [
           "All records related to the death of Geraldo Lunas Campos, age 55, Cuban national and Henrietta, New York resident, on January 3, 2026, at Camp East Montana ICE detention facility near El Paso, Texas.",
@@ -372,7 +372,7 @@ const allCampaigns = {
         "fullName": "Immigration and Customs Enforcement",
         "description": "Detention records, guard conduct, and use-of-force reports.",
         "email": null,
-        "portal": "https://www.securerelease.us/",
+        "portal": "https://www.foia.gov/",
         "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
         "requests": [
           "All records related to the death of Geraldo Lunas Campos, age 55, at Camp East Montana on January 3, 2026, including the complete A-file (alien file) for Lunas Campos.",
@@ -519,7 +519,7 @@ const allCampaigns = {
         "fullName": "Department of Homeland Security",
         "description": "Agent records, policies, and internal investigation.",
         "email": null,
-        "portal": "https://www.securerelease.us/",
+        "portal": "https://www.foia.gov/",
         "address": "Department of Homeland Security\nPrivacy Office, Mail Stop 0655\n2707 Martin Luther King Jr. Ave. SE\nWashington, D.C. 20528-0655",
         "requests": [
           "All records related to the shooting death of Keith Porter Jr. on December 31, 2025, in Northridge, Los Angeles, by off-duty ICE Agent Brian Palacios.",
@@ -536,7 +536,7 @@ const allCampaigns = {
         "fullName": "Immigration and Customs Enforcement",
         "description": "Agent records, training, and internal investigation.",
         "email": null,
-        "portal": "https://www.securerelease.us/",
+        "portal": "https://www.foia.gov/",
         "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
         "requests": [
           "All records related to ICE Agent Brian Palacios, who shot and killed Keith Porter Jr. on December 31, 2025.",
