@@ -74,8 +74,8 @@ const allCampaigns = {
         "name": "FBI",
         "fullName": "Federal Bureau of Investigation",
         "description": "Federal investigation into the shooting.",
-        "email": "foiparequest@fbi.gov",
-        "portal": "https://vault.fbi.gov/fdps-1/foia-request",
+        "email": null,
+        "portal": "https://efoia.fbi.gov/",
         "address": "Federal Bureau of Investigation\nAttn: FOIA/PA Request\nRecord/Information Dissemination Section\n170 Marcel Drive\nWinchester, VA 22602",
         "requests": [
           "All records related to the fatal shooting of Alex Jeffrey Pretti on January 24, 2026, in Minneapolis.",
@@ -200,8 +200,8 @@ const allCampaigns = {
         "name": "FBI",
         "fullName": "Federal Bureau of Investigation",
         "description": "Leading investigation; blocking state access to evidence.",
-        "email": "foiparequest@fbi.gov",
-        "portal": "https://vault.fbi.gov/fdps-1/foia-request",
+        "email": null,
+        "portal": "https://efoia.fbi.gov/",
         "address": "Federal Bureau of Investigation\nAttn: FOIA/PA Request\nRecord/Information Dissemination Section\n170 Marcel Drive\nWinchester, VA 22602",
         "requests": [
           "All records related to the fatal shooting of Renee Nicole Good, a U.S. citizen, by ICE Agent Jonathan Ross on January 7, 2026, in Minneapolis, Minnesota.",
@@ -389,8 +389,8 @@ const allCampaigns = {
         "name": "FBI",
         "fullName": "Federal Bureau of Investigation",
         "description": "FBI investigation into the death.",
-        "email": "foiparequest@fbi.gov",
-        "portal": "https://vault.fbi.gov/fdps-1/foia-request",
+        "email": null,
+        "portal": "https://efoia.fbi.gov/",
         "address": "Federal Bureau of Investigation\nAttn: FOIA/PA Request\nRecord/Information Dissemination Section\n170 Marcel Drive\nWinchester, VA 22602",
         "requests": [
           "All records related to any FBI investigation into the death of Geraldo Lunas Campos, age 55, on January 3, 2026, at Camp East Montana ICE detention facility near El Paso, Texas.",
