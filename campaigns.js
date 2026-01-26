@@ -19,22 +19,6 @@ const allCampaigns = {
       {"name": "Star Tribune", "url": "https://www.startribune.com/alex-pretti-identified-as-man-fatally-shot-by-federal-officers-in-minneapolis/601570109"}
     ],
     "agencies": {
-      "ice": {
-        "name": "ICE",
-        "fullName": "Immigration and Customs Enforcement",
-        "description": "ICE agents were present during the operation; records of coordination.",
-        "email": null,
-        "portal": "https://www.ice.gov/foia",
-        "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
-        "requests": [
-          "All records related to the January 24, 2026 immigration enforcement operation in Minneapolis during which Alex Pretti was killed.",
-          "All records related to ICE coordination with Border Patrol on this operation.",
-          "All records identifying the target of the operation (reportedly an undocumented immigrant wanted for domestic assault).",
-          "All body-worn camera and dashcam footage from ICE agents present at the scene.",
-          "All communications between ICE, CBP, and DHS regarding the shooting and subsequent investigation.",
-          "All records related to ICE presence at protests in Minneapolis following the January 7, 2026 killing of Renee Good."
-        ]
-      },
       "doj": {
         "name": "DOJ",
         "fullName": "Department of Justice",
@@ -65,6 +49,22 @@ const allCampaigns = {
           "All witness statements and investigative interviews conducted.",
           "All evidence collected: firearms, ammunition casings, cell phones, forensic reports, and autopsy reports.",
           "All records related to the discrepancy between federal claims (Pretti approached with a gun) and video evidence (Pretti was holding his phone)."
+        ]
+      },
+      "ice": {
+        "name": "ICE",
+        "fullName": "Immigration and Customs Enforcement",
+        "description": "ICE agents were present during the operation; records of coordination.",
+        "email": null,
+        "portal": "https://www.ice.gov/foia",
+        "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
+        "requests": [
+          "All records related to the January 24, 2026 immigration enforcement operation in Minneapolis during which Alex Pretti was killed.",
+          "All records related to ICE coordination with Border Patrol on this operation.",
+          "All records identifying the target of the operation (reportedly an undocumented immigrant wanted for domestic assault).",
+          "All body-worn camera and dashcam footage from ICE agents present at the scene.",
+          "All communications between ICE, CBP, and DHS regarding the shooting and subsequent investigation.",
+          "All records related to ICE presence at protests in Minneapolis following the January 7, 2026 killing of Renee Good."
         ]
       },
       "cbp": {
@@ -196,22 +196,6 @@ const allCampaigns = {
       {"name": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Killing_of_Renee_Good"}
     ],
     "agencies": {
-      "ice": {
-        "name": "ICE",
-        "fullName": "Immigration and Customs Enforcement",
-        "description": "Agent Jonathan Ross records, use-of-force history, cellphone video.",
-        "email": null,
-        "portal": "https://www.ice.gov/foia",
-        "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
-        "requests": [
-          "All records related to ICE Agent Jonathan Ross: complete personnel file, employment history (Border Patrol 2007-2015, ICE 2015-present), training records, firearms instructor certifications.",
-          "All prior use-of-force incidents, complaints, and disciplinary actions involving Agent Ross.",
-          "Agent Ross's cellphone video recorded during the January 7, 2026 shooting.",
-          "All body-worn camera and dashcam footage from all ICE agents present at the scene.",
-          "All records related to the January 7, 2026 Minneapolis operation: planning documents, target lists, after-action reports.",
-          "Current duty status and location of Agent Ross following this incident."
-        ]
-      },
       "doj": {
         "name": "DOJ",
         "fullName": "Department of Justice",
@@ -241,6 +225,22 @@ const allCampaigns = {
           "All records related to the decision to exclude Minnesota authorities from joint investigation.",
           "All evidence collected: the ICE agent's firearm, ammunition casings, Renee Good's vehicle, forensic reports, and autopsy reports.",
           "All witness statements and investigative interviews conducted."
+        ]
+      },
+      "ice": {
+        "name": "ICE",
+        "fullName": "Immigration and Customs Enforcement",
+        "description": "Agent Jonathan Ross records, use-of-force history, cellphone video.",
+        "email": null,
+        "portal": "https://www.ice.gov/foia",
+        "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
+        "requests": [
+          "All records related to ICE Agent Jonathan Ross: complete personnel file, employment history (Border Patrol 2007-2015, ICE 2015-present), training records, firearms instructor certifications.",
+          "All prior use-of-force incidents, complaints, and disciplinary actions involving Agent Ross.",
+          "Agent Ross's cellphone video recorded during the January 7, 2026 shooting.",
+          "All body-worn camera and dashcam footage from all ICE agents present at the scene.",
+          "All records related to the January 7, 2026 Minneapolis operation: planning documents, target lists, after-action reports.",
+          "Current duty status and location of Agent Ross following this incident."
         ]
       },
       "dhs": {
@@ -349,24 +349,6 @@ const allCampaigns = {
       {"name": "ACLU", "url": "https://www.aclu.org/press-releases/aclu-renews-calls-for-closure-of-camp-east-montana-following-reports-that-detained-immigrant-was-choked-to-death-by-ice-officer"}
     ],
     "agencies": {
-      "ice": {
-        "name": "ICE",
-        "fullName": "Immigration and Customs Enforcement",
-        "description": "Detention records, guard conduct, and use-of-force reports.",
-        "email": null,
-        "portal": "https://www.ice.gov/foia",
-        "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
-        "requests": [
-          "All records related to the death of Geraldo Lunas Campos, age 55, at Camp East Montana on January 3, 2026, including the complete A-file (alien file) for Lunas Campos.",
-          "All records documenting the 'disruptive' behavior ICE claims occurred while Lunas Campos was in line for medication on January 3, 2026.",
-          "All records related to Lunas Campos's placement in segregation, including authorization, duration, and conditions.",
-          "All records identifying guards, medical staff, and other personnel involved in the January 3, 2026 incident, including their employment records, training certifications, prior complaints, and use-of-force history.",
-          "All medical records for Lunas Campos during his detention, including intake screening, medication records, mental health evaluations, and medical response on January 3, 2026.",
-          "All policies and training materials governing use of force, restraint techniques, and segregation at Camp East Montana and other ICE detention facilities.",
-          "All records of prior deaths, serious injuries, or use-of-force incidents at Camp East Montana since it began operations.",
-          "All records related to Lunas Campos's immigration case, including how and when he was taken into ICE custody and transferred to Camp East Montana."
-        ]
-      },
       "doj": {
         "name": "DOJ",
         "fullName": "Department of Justice",
@@ -397,6 +379,24 @@ const allCampaigns = {
           "All witness statements collected, including from detainees present during the medication line incident and segregation placement.",
           "All records related to potential civil rights violations under 18 U.S.C. § 242 (Deprivation of Rights Under Color of Law).",
           "All records related to the discrepancy between DHS's initial claim of a 'suicide attempt' and the medical examiner's findings of asphyxia from compression."
+        ]
+      },
+      "ice": {
+        "name": "ICE",
+        "fullName": "Immigration and Customs Enforcement",
+        "description": "Detention records, guard conduct, and use-of-force reports.",
+        "email": null,
+        "portal": "https://www.ice.gov/foia",
+        "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
+        "requests": [
+          "All records related to the death of Geraldo Lunas Campos, age 55, at Camp East Montana on January 3, 2026, including the complete A-file (alien file) for Lunas Campos.",
+          "All records documenting the 'disruptive' behavior ICE claims occurred while Lunas Campos was in line for medication on January 3, 2026.",
+          "All records related to Lunas Campos's placement in segregation, including authorization, duration, and conditions.",
+          "All records identifying guards, medical staff, and other personnel involved in the January 3, 2026 incident, including their employment records, training certifications, prior complaints, and use-of-force history.",
+          "All medical records for Lunas Campos during his detention, including intake screening, medication records, mental health evaluations, and medical response on January 3, 2026.",
+          "All policies and training materials governing use of force, restraint techniques, and segregation at Camp East Montana and other ICE detention facilities.",
+          "All records of prior deaths, serious injuries, or use-of-force incidents at Camp East Montana since it began operations.",
+          "All records related to Lunas Campos's immigration case, including how and when he was taken into ICE custody and transferred to Camp East Montana."
         ]
       },
       "dhs": {
@@ -514,6 +514,21 @@ const allCampaigns = {
       {"name": "TheGrio", "url": "https://thegrio.com/2026/01/16/court-documents-allegedly-reveal-ice-agent-keith-porter-jr/"}
     ],
     "agencies": {
+      "doj": {
+        "name": "DOJ",
+        "fullName": "Department of Justice",
+        "description": "Civil rights review and federal law enforcement oversight.",
+        "email": "MRUFOIA.Requests@usdoj.gov",
+        "portal": "https://www.justice.gov/oip/submit-and-track-request-or-appeal",
+        "address": "Department of Justice\nOffice of Information Policy\n6th Floor, 441 G Street, NW\nWashington, D.C. 20530",
+        "requests": [
+          "All records related to DOJ involvement in the investigation of Keith Porter Jr.'s death.",
+          "All records related to civil rights review of this shooting.",
+          "All communications between DOJ, DHS, ICE, and local authorities regarding this case.",
+          "All records related to DOJ policies on investigating off-duty federal law enforcement shootings.",
+          "The autopsy report, medical examiner findings, and all forensic reports related to Keith Porter Jr.'s death."
+        ]
+      },
       "ice": {
         "name": "ICE",
         "fullName": "Immigration and Customs Enforcement",
@@ -528,21 +543,6 @@ const allCampaigns = {
           "All policies governing off-duty use of ICE-authorized firearms.",
           "All policies governing ICE agent response to non-immigration-related incidents.",
           "All records of Agent Palacios's current duty status following this incident."
-        ]
-      },
-      "doj": {
-        "name": "DOJ",
-        "fullName": "Department of Justice",
-        "description": "Civil rights review and federal law enforcement oversight.",
-        "email": "MRUFOIA.Requests@usdoj.gov",
-        "portal": "https://www.justice.gov/oip/submit-and-track-request-or-appeal",
-        "address": "Department of Justice\nOffice of Information Policy\n6th Floor, 441 G Street, NW\nWashington, D.C. 20530",
-        "requests": [
-          "All records related to DOJ involvement in the investigation of Keith Porter Jr.'s death.",
-          "All records related to civil rights review of this shooting.",
-          "All communications between DOJ, DHS, ICE, and local authorities regarding this case.",
-          "All records related to DOJ policies on investigating off-duty federal law enforcement shootings.",
-          "The autopsy report, medical examiner findings, and all forensic reports related to Keith Porter Jr.'s death."
         ]
       },
       "dhs": {
