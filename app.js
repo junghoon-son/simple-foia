@@ -397,6 +397,14 @@ These allegations implicate potential violations of:
 - 18 U.S.C. § 1519 (Destruction, Alteration, or Falsification of Records)
 - Agency policies governing use of force and conduct of personnel
 
+IMPORTANT: NO STATUTE OF LIMITATIONS
+
+This complaint involves a death in federal custody or at the hands of federal agents. Please note:
+- There is NO statute of limitations for murder under federal law (18 U.S.C. § 1111)
+- There is NO statute of limitations for civil rights violations resulting in death (18 U.S.C. § 242)
+- Any decision to decline prosecution or close this investigation is NOT final and may be revisited by future administrations
+- I request that all records be preserved indefinitely to enable future review
+
 REQUESTED INVESTIGATIVE ACTIONS
 
 I respectfully request that the Office of Inspector General:
@@ -449,11 +457,19 @@ I respectfully request that you:
 
 ${c.actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}
 
+PRESERVATION FOR FUTURE ACCOUNTABILITY
+
+This matter involves the death of a person at the hands of federal agents. I respectfully request:
+- Enter this matter into the Congressional Record to create a permanent government record
+- There is NO statute of limitations for murder (18 U.S.C. § 1111) or civil rights violations resulting in death (18 U.S.C. § 242)
+- Any executive branch decision to decline investigation is NOT final and may be revisited by future administrations
+- Preserve all records and correspondence for future congressional review
+
 CONSTITUENT REQUEST
 
 As one of your constituents, I ask that your office acknowledge receipt of this letter and provide updates on any actions taken. I am available to provide additional information or testimony if requested.
 
-This matter affects public trust in federal law enforcement and government accountability. I believe congressional oversight is essential to ensure transparency and justice.
+This matter affects public trust in federal law enforcement and government accountability. Congressional oversight is essential to ensure that these cases remain open for future accountability, regardless of current administration decisions.
 
 Thank you for your service and attention to this matter.
 
