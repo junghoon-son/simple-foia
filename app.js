@@ -252,6 +252,7 @@ function renderMain() {
       </p>
       <div class="record-count">${totalActions} permanent records created</div>
       <div class="fine-print">Records persist even if ignored. The next administration can act on them.</div>
+      <div class="fine-print" style="margin-top: 12px;"><strong>Re-submit periodically:</strong> No limit on FOIA requests. Re-submit when investigations close, new info emerges, or exemptions expire. Quarterly re-requests capture new records created.</div>
     </div>
   `;
 

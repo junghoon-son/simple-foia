@@ -64,7 +64,8 @@ const allCampaigns = {
           "All records identifying the target of the operation (reportedly an undocumented immigrant wanted for domestic assault).",
           "All body-worn camera and dashcam footage from ICE agents present at the scene.",
           "All communications between ICE, CBP, and DHS regarding the shooting and subsequent investigation.",
-          "All records related to ICE presence at protests in Minneapolis following the January 7, 2026 killing of Renee Good."
+          "All records related to ICE presence at protests in Minneapolis following the January 7, 2026 killing of Renee Good.",
+          "All travel authorizations, travel vouchers, per diem claims, hotel/lodging receipts, and expense reports for ICE agents who traveled to Minneapolis for the January 24, 2026 operation."
         ]
       },
       "cbp": {
@@ -82,7 +83,8 @@ const allCampaigns = {
           "All records related to the immigration enforcement operation on January 24, 2026, including the target individual, planning documents, and after-action reports.",
           "All communications between CBP, DHS, ICE, and DOJ regarding jurisdiction and the decision to block Minnesota BCA access to the crime scene.",
           "All records related to the agents involved: personnel files, training records, prior complaints, use-of-force history, and current duty status.",
-          "All training records for the Border Patrol agents who fired shots, including total hours of firearms training, de-escalation training, and use-of-force training completed."
+          "All training records for the Border Patrol agents who fired shots, including total hours of firearms training, de-escalation training, and use-of-force training completed.",
+          "All travel authorizations, travel vouchers, per diem claims, hotel/lodging receipts, and expense reports for Border Patrol agents who traveled to Minneapolis for the January 24, 2026 operation."
         ]
       },
       "dhs": {
@@ -242,7 +244,8 @@ const allCampaigns = {
           "All body-worn camera and dashcam footage from all ICE agents present at the scene.",
           "All records related to the January 7, 2026 Minneapolis operation: planning documents, target lists, after-action reports.",
           "Current duty status and location of Agent Ross following this incident.",
-          "All training records for Agent Jonathan Ross, including total hours of firearms training, de-escalation training, and use-of-force training completed during his tenure at Border Patrol (2007-2015) and ICE (2015-present)."
+          "All training records for Agent Jonathan Ross, including total hours of firearms training, de-escalation training, and use-of-force training completed during his tenure at Border Patrol (2007-2015) and ICE (2015-present).",
+          "All travel authorizations, travel vouchers, per diem claims, hotel/lodging receipts, and expense reports for ICE agents involved in the January 7, 2026 Minneapolis operation."
         ]
       },
       "dhs": {
