@@ -23,8 +23,8 @@ const allCampaigns = {
         "name": "ICE",
         "fullName": "Immigration and Customs Enforcement",
         "description": "ICE agents were present during the operation; records of coordination.",
-        "email": "ice-foia@ice.dhs.gov",
-        "portal": "https://www.foia.gov/",
+        "email": null,
+        "portal": "https://www.ice.gov/foia",
         "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
         "requests": [
           "All records related to the January 24, 2026 immigration enforcement operation in Minneapolis during which Alex Pretti was killed.",
@@ -200,8 +200,8 @@ const allCampaigns = {
         "name": "ICE",
         "fullName": "Immigration and Customs Enforcement",
         "description": "Agent Jonathan Ross records, use-of-force history, cellphone video.",
-        "email": "ice-foia@ice.dhs.gov",
-        "portal": "https://www.foia.gov/",
+        "email": null,
+        "portal": "https://www.ice.gov/foia",
         "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
         "requests": [
           "All records related to ICE Agent Jonathan Ross: complete personnel file, employment history (Border Patrol 2007-2015, ICE 2015-present), training records, firearms instructor certifications.",
@@ -353,8 +353,8 @@ const allCampaigns = {
         "name": "ICE",
         "fullName": "Immigration and Customs Enforcement",
         "description": "Detention records, guard conduct, and use-of-force reports.",
-        "email": "ice-foia@ice.dhs.gov",
-        "portal": "https://www.foia.gov/",
+        "email": null,
+        "portal": "https://www.ice.gov/foia",
         "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
         "requests": [
           "All records related to the death of Geraldo Lunas Campos, age 55, at Camp East Montana on January 3, 2026, including the complete A-file (alien file) for Lunas Campos.",
@@ -518,8 +518,8 @@ const allCampaigns = {
         "name": "ICE",
         "fullName": "Immigration and Customs Enforcement",
         "description": "Agent records, training, and internal investigation.",
-        "email": "ice-foia@ice.dhs.gov",
-        "portal": "https://www.foia.gov/",
+        "email": null,
+        "portal": "https://www.ice.gov/foia",
         "address": "U.S. Immigration and Customs Enforcement\nFreedom of Information Act Office\n500 12th Street, S.W., Stop 5009\nWashington, D.C. 20536-5009",
         "requests": [
           "All records related to ICE Agent Brian Palacios, who shot and killed Keith Porter Jr. on December 31, 2025.",
