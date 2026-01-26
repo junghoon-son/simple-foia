@@ -369,9 +369,9 @@ This request concerns a death involving federal agents. I hereby formally reques
 
 3. This FOIA request itself constitutes a federal record documenting that these records were formally requested as of the date above.
 
-RESPONSE
+EXPEDITED RESPONSE
 
-I expect a response within 20 business days as required by 5 U.S.C. § 552(a)(6)(A)(i). If you deny any part of this request, please cite each specific exemption and explain how it applies. Please also inform me of appeal procedures available under the law.
+Given the request for expedited processing above, I expect a response within 10 business days as required by 5 U.S.C. § 552(a)(6)(E)(ii). If expedited processing is denied, I expect a response within the standard 20 business days per 5 U.S.C. § 552(a)(6)(A)(i). If you deny any part of this request, please cite each specific exemption and explain how it applies. Please also inform me of appeal procedures available under the law.
 
 Thank you for your prompt attention to this request.
 
