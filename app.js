@@ -358,6 +358,16 @@ I request a waiver of all fees pursuant to 5 U.S.C. § 552(a)(4)(A)(iii). Disclo
 
 If my fee waiver request is denied, I am willing to pay fees up to $25.00. Please contact me before incurring costs beyond this amount.
 
+RECORD PRESERVATION AND FUTURE RELEASE
+
+This request concerns a death involving federal agents. I hereby formally request:
+
+1. All responsive records be preserved indefinitely pursuant to your agency's record retention obligations and the Federal Records Act (44 U.S.C. Chapter 31).
+
+2. For any redacted material: please note that I intend to submit subsequent requests as exemptions expire (e.g., when investigations close, when privacy interests diminish, or under future administration policies). Redactions made today are not permanent.
+
+3. This FOIA request itself constitutes a federal record documenting that these records were formally requested as of the date above.
+
 RESPONSE
 
 I expect a response within 20 business days as required by 5 U.S.C. § 552(a)(6)(A)(i). If you deny any part of this request, please cite each specific exemption and explain how it applies. Please also inform me of appeal procedures available under the law.
