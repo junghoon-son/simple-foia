@@ -81,7 +81,8 @@ const allCampaigns = {
           "All evidence supporting or contradicting the claim that Pretti approached agents with a firearm, including witness statements and video analysis.",
           "All records related to the immigration enforcement operation on January 24, 2026, including the target individual, planning documents, and after-action reports.",
           "All communications between CBP, DHS, ICE, and DOJ regarding jurisdiction and the decision to block Minnesota BCA access to the crime scene.",
-          "All records related to the agents involved: personnel files, training records, prior complaints, use-of-force history, and current duty status."
+          "All records related to the agents involved: personnel files, training records, prior complaints, use-of-force history, and current duty status.",
+          "All training records for the Border Patrol agents who fired shots, including total hours of firearms training, de-escalation training, and use-of-force training completed."
         ]
       },
       "dhs": {
@@ -240,7 +241,8 @@ const allCampaigns = {
           "Agent Ross's cellphone video recorded during the January 7, 2026 shooting.",
           "All body-worn camera and dashcam footage from all ICE agents present at the scene.",
           "All records related to the January 7, 2026 Minneapolis operation: planning documents, target lists, after-action reports.",
-          "Current duty status and location of Agent Ross following this incident."
+          "Current duty status and location of Agent Ross following this incident.",
+          "All training records for Agent Jonathan Ross, including total hours of firearms training, de-escalation training, and use-of-force training completed during his tenure at Border Patrol (2007-2015) and ICE (2015-present)."
         ]
       },
       "dhs": {
@@ -396,7 +398,8 @@ const allCampaigns = {
           "All medical records for Lunas Campos during his detention, including intake screening, medication records, mental health evaluations, and medical response on January 3, 2026.",
           "All policies and training materials governing use of force, restraint techniques, and segregation at Camp East Montana and other ICE detention facilities.",
           "All records of prior deaths, serious injuries, or use-of-force incidents at Camp East Montana since it began operations.",
-          "All records related to Lunas Campos's immigration case, including how and when he was taken into ICE custody and transferred to Camp East Montana."
+          "All records related to Lunas Campos's immigration case, including how and when he was taken into ICE custody and transferred to Camp East Montana.",
+          "All training records for the guards involved in the January 3, 2026 incident, including total hours of restraint training, de-escalation training, positional asphyxia awareness training, and use-of-force training completed."
         ]
       },
       "dhs": {
@@ -542,7 +545,8 @@ const allCampaigns = {
           "All records from the Office of Professional Responsibility investigation into this shooting.",
           "All policies governing off-duty use of ICE-authorized firearms.",
           "All policies governing ICE agent response to non-immigration-related incidents.",
-          "All records of Agent Palacios's current duty status following this incident."
+          "All records of Agent Palacios's current duty status following this incident.",
+          "All training records for Agent Brian Palacios, including total hours of firearms training, de-escalation training, and use-of-force training completed."
         ]
       },
       "dhs": {
