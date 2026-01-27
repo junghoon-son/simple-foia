@@ -250,7 +250,11 @@ const allCampaigns = {
           "All records related to the January 7, 2026 Minneapolis operation: planning documents, target lists, after-action reports.",
           "Current duty status and location of Agent Ross following this incident.",
           "All training records for Agent Jonathan Ross, including total hours of firearms training, de-escalation training, and use-of-force training completed during his tenure at Border Patrol (2007-2015) and ICE (2015-present).",
-          "All travel authorizations, travel vouchers, per diem claims, hotel/lodging receipts, and expense reports for ICE agents involved in the January 7, 2026 Minneapolis operation."
+          "All travel authorizations, travel vouchers, per diem claims, hotel/lodging receipts, and expense reports for ICE agents involved in the January 7, 2026 Minneapolis operation.",
+          "All records of disciplinary actions initiated, pending, or completed against Agent Jonathan Ross, including administrative leave status and any return-to-duty determinations.",
+          "All records documenting the status of any internal affairs or Office of Professional Responsibility investigation into Agent Ross, including opening date, assigned investigators, and expected completion date.",
+          "All records explaining why no criminal charges have been filed against Agent Jonathan Ross, including any prosecutorial declination memoranda, immunity determinations, or DOJ decisions not to prosecute.",
+          "All communications between ICE, DHS, DOJ, and the U.S. Attorney's Office regarding the decision not to charge Agent Ross or to grant him immunity from prosecution."
         ]
       },
       "dhs": {
