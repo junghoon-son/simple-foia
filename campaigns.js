@@ -84,7 +84,12 @@ const allCampaigns = {
           "All communications between CBP, DHS, ICE, and DOJ regarding jurisdiction and the decision to block Minnesota BCA access to the crime scene.",
           "All records related to the agents involved: personnel files, training records, prior complaints, use-of-force history, and current duty status.",
           "All training records for the Border Patrol agents who fired shots, including total hours of firearms training, de-escalation training, and use-of-force training completed.",
-          "All travel authorizations, travel vouchers, per diem claims, hotel/lodging receipts, and expense reports for Border Patrol agents who traveled to Minneapolis for the January 24, 2026 operation."
+          "All travel authorizations, travel vouchers, per diem claims, hotel/lodging receipts, and expense reports for Border Patrol agents who traveled to Minneapolis for the January 24, 2026 operation.",
+          "The names and badge numbers of all Border Patrol agents who discharged their firearms on January 24, 2026, resulting in Alex Pretti's death.",
+          "All records related to the decision to withhold the identities of the agents who shot Alex Pretti, including any policies, legal opinions, or administrative decisions regarding public disclosure.",
+          "All records of disciplinary actions initiated, pending, or completed against any agent involved in the shooting, including administrative leave status.",
+          "All records documenting the status of any internal affairs or use-of-force investigation, including opening date, assigned investigators, and expected completion date.",
+          "All records explaining why no criminal charges have been filed against the agents involved, including any prosecutorial declination memoranda or immunity determinations."
         ]
       },
       "dhs": {
