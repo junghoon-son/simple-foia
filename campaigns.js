@@ -2,6 +2,95 @@
 // NO EXTERNAL REQUESTS: All data is local. No analytics, no tracking, no data collection.
 
 const allCampaigns = {
+  "epstein-files-bondi": {
+    "id": "epstein-files-bondi",
+    "title": "Epstein Files — DOJ Coverup",
+    "date": "2026-02-01",
+    "status": "active",
+    "summary": "AG Pam Bondi demanded 'full and complete Epstein files' in Feb 2025. Congress mandated release by Dec 19, 2025. As of Feb 2026, over 5.2 million documents remain unreleased—less than 1% disclosed. DOJ releases files on Fridays to bury news. Heavy redactions violate federal law. Deputy AG Blanche declared review 'is over.' Bipartisan outrage from Massie (R), Khanna (D), and AOC.",
+    "keywords": ["epstein", "bondi", "doj", "fbi", "coverup", "files", "sex trafficking", "trump", "blanche", "kash patel", "redactions"],
+    "sources": [
+      {"name": "Democracy Docket", "url": "https://www.democracydocket.com/opinion/for-trump-the-epstein-cover-up-beats-the-truth/"},
+      {"name": "The Guardian", "url": "https://www.theguardian.com/us-news/pam-bondi"}
+    ],
+    "agencies": {
+      "doj": {
+        "name": "DOJ",
+        "fullName": "Department of Justice",
+        "description": "Holding 5.2M+ Epstein documents; slow-walking release despite congressional mandate.",
+        "email": "MRUFOIA.Requests@usdoj.gov",
+        "portal": "https://www.justice.gov/oip/submit-and-track-request-or-appeal",
+        "address": "Department of Justice\nOffice of Information Policy\n6th Floor, 441 G Street, NW\nWashington, D.C. 20530",
+        "requests": [
+          "All records related to Jeffrey Epstein, including files obtained from the FBI, that have not yet been publicly released.",
+          "All communications between Attorney General Pam Bondi and FBI Director Kash Patel regarding the Epstein files, including Bondi's Feb 2025 directive demanding full release by Feb 28, 2025.",
+          "All records related to the strategy for releasing Epstein files, including decisions to release on Fridays and redaction policies.",
+          "All legal memoranda regarding redactions applied to Epstein files and compliance with the congressional mandate for full release.",
+          "All communications between DOJ leadership and the White House regarding Epstein file releases and timing.",
+          "All records related to Deputy AG Todd Blanche's declaration that the Epstein file review 'is over.'",
+          "All records identifying individuals referenced in Epstein files who have been redacted or withheld from public release."
+        ]
+      },
+      "fbi": {
+        "name": "FBI",
+        "fullName": "Federal Bureau of Investigation",
+        "description": "Original custodian of Epstein investigation files; received Bondi directive for full release.",
+        "email": null,
+        "portal": "https://efoia.fbi.gov/",
+        "address": "Federal Bureau of Investigation\nAttn: FOIA/PA Request\nRecord/Information Dissemination Section\n170 Marcel Drive\nWinchester, VA 22602",
+        "requests": [
+          "All records related to Jeffrey Epstein and Ghislaine Maxwell investigations, including witness interviews, surveillance records, and evidence logs.",
+          "All communications between FBI and DOJ regarding the release of Epstein files following AG Bondi's Feb 2025 directive.",
+          "All records related to FBI Director Kash Patel's response to AG Bondi's demand for full Epstein file release.",
+          "All records identifying individuals investigated in connection with Epstein's sex trafficking operation who have not been publicly named.",
+          "All video recordings, flight logs, and visitor logs from Epstein properties in FBI possession.",
+          "All records related to the 2019 non-prosecution agreement and subsequent decisions not to prosecute identified individuals."
+        ]
+      }
+    },
+    "complaints": {
+      "doj-oig": {
+        "name": "DOJ Inspector General",
+        "description": "Report DOJ's failure to comply with congressional mandate and potential obstruction.",
+        "email": "oig.hotline@usdoj.gov",
+        "portal": "https://oig.justice.gov/hotline",
+        "address": "Department of Justice\nOffice of the Inspector General\n950 Pennsylvania Avenue NW\nWashington, D.C. 20530",
+        "subject": "Complaint: Failure to Release Epstein Files as Required by Law",
+        "allegations": [
+          "VIOLATION OF CONGRESSIONAL MANDATE: Congress enacted legislation in November 2025 requiring full release of Epstein files within 30 days (deadline: Dec 19, 2025). As of February 2026, over 5.2 million documents remain unreleased—less than 1% of total files disclosed.",
+          "STRATEGIC INFORMATION SUPPRESSION: DOJ has consistently released files on Friday afternoons—a classic tactic to minimize media coverage and public attention.",
+          "EXCESSIVE REDACTIONS: Heavy redactions are being applied to released documents in apparent violation of the congressional mandate for full disclosure.",
+          "FAILURE TO COMPLY WITH AG DIRECTIVE: Despite AG Bondi's Feb 2025 letter demanding 'full and complete' files with 'no withholdings or limitations,' the vast majority of records remain suppressed.",
+          "POTENTIAL OBSTRUCTION: The pattern of delay, strategic timing, and excessive redactions suggests intentional efforts to prevent public accountability."
+        ],
+        "actions": [
+          "Investigate DOJ's failure to meet the congressional deadline for full Epstein file release",
+          "Investigate the decision-making process for redactions and withholdings",
+          "Investigate communications between DOJ leadership and the White House regarding release strategy",
+          "Determine whether the strategic Friday releases constitute intentional information suppression",
+          "Assess compliance with AG Bondi's Feb 2025 directive"
+        ]
+      }
+    },
+    "congress": {
+      "subject": "Demand Full Release of Epstein Files as Required by Law",
+      "background": "In November 2025, Congress enacted legislation mandating the full release of all Jeffrey Epstein files within 30 days. That deadline—December 19, 2025—has long passed. Despite Attorney General Pam Bondi's February 2025 directive demanding 'full and complete' files from the FBI, over 5.2 million documents remain unreleased. The Department of Justice has disclosed less than 1% of the total records, with heavy redactions applied to those released. Files are consistently released on Friday afternoons to minimize coverage. Deputy Attorney General Todd Blanche has declared the review 'is over' despite the vast majority of records remaining hidden.",
+      "concerns": [
+        "The DOJ has released less than 1% of Epstein files despite a clear congressional mandate",
+        "Strategic Friday releases indicate intentional efforts to minimize public attention",
+        "Heavy redactions may violate the law requiring full disclosure",
+        "5.2+ million documents remain suppressed months after the legal deadline",
+        "Deputy AG Blanche's declaration that the review 'is over' while records remain hidden"
+      ],
+      "actions": [
+        "Demand immediate release of all remaining Epstein files",
+        "Subpoena unredacted documents for congressional oversight",
+        "Hold hearings on DOJ's failure to comply with the release mandate",
+        "Investigate whether redactions are being used to protect specific individuals",
+        "Consider contempt proceedings for continued non-compliance"
+      ]
+    }
+  },
   "alex-pretti": {
     "id": "alex-pretti",
     "title": "Alex Pretti Case — Border Patrol Shooting",
