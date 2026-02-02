@@ -80,7 +80,13 @@ const allCampaigns = {
     },
     "congress": {
       "subject": "Demand Full Release of Epstein Files as Required by Law",
-      "background": "In November 2025, Congress enacted legislation mandating the full release of all Jeffrey Epstein files within 30 days. That deadline—December 19, 2025—has long passed. Despite Attorney General Pam Bondi's February 2025 directive demanding 'full and complete' files from the FBI, over 5.2 million documents remain unreleased. The Department of Justice has disclosed less than 1% of the total records, with heavy redactions applied to those released. Files are consistently released on Friday afternoons to minimize coverage. Deputy Attorney General Todd Blanche has declared the review 'is over' despite the vast majority of records remaining hidden.",
+      "background": [
+        "In November 2025, Congress enacted legislation mandating the full release of all Jeffrey Epstein files within 30 days. That deadline—December 19, 2025—has long passed.",
+        "Despite Attorney General Pam Bondi's February 2025 directive demanding 'full and complete' files from the FBI, over 5.2 million documents remain unreleased.",
+        "The Department of Justice has disclosed less than 1% of the total records, with heavy redactions applied to those released.",
+        "Files are consistently released on Friday afternoons to minimize media coverage and public attention.",
+        "Deputy Attorney General Todd Blanche has declared the review 'is over' despite the vast majority of records remaining hidden."
+      ],
       "concerns": [
         "The DOJ has released less than 1% of Epstein files despite a clear congressional mandate",
         "Strategic Friday releases indicate intentional efforts to minimize public attention",
