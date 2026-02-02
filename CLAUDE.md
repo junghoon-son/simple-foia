@@ -14,15 +14,18 @@ Mass FOIA is a privacy-first FOIA (Freedom of Information Act) request generator
 ## File Structure
 
 ```
-index.html      # Landing page with campaign list and search
+index.html      # Landing page (includes slimmed campaign data for search/display)
 campaign.html   # Campaign detail page (HTML structure only)
-styles.css      # All CSS styles
-campaigns.js    # Campaign data (edit this to add new campaigns)
+campaigns.js    # Full campaign data (edit this to add new campaigns)
 app.js          # Application logic and template generation
-campaigns.json  # Data backup (legacy)
+styles.css      # All CSS styles
 README.md       # User-facing documentation
 og-image.svg    # Social media preview image
 ```
+
+**Note:** Campaign data exists in TWO places:
+- `campaigns.js` - Full data with all FOIA requests, complaints, congress letters
+- `index.html` - Slimmed data (id, title, date, status, category, summary, keywords) for landing page
 
 ## Development
 
@@ -37,15 +40,74 @@ git push origin main
 
 ### Data Structure
 
-Campaign data is embedded directly in `campaign.html` as `const allCampaigns = {...}`:
+Campaign data lives in `campaigns.js` as `const allCampaigns = {...}`. The index page also has a slimmed-down copy in `index.html` for the landing page.
+
+**CRITICAL: Field Type Requirements**
+
+The template generators in `app.js` call `.map()` on certain fields, so they MUST be arrays:
+
+| Field | Type | Used By |
+|-------|------|---------|
+| `agencies[id].requests` | `string[]` | `generateFOIA()` |
+| `complaints[id].allegations` | `string[]` | `generateComplaint()` |
+| `complaints[id].actions` | `string[]` | `generateComplaint()` |
+| `congress.background` | `string[]` | `generateCongress()` |
+| `congress.concerns` | `string[]` | `generateCongress()` |
+| `congress.actions` | `string[]` | `generateCongress()` |
+| `keywords` | `string[]` | Search filtering |
+| `sources` | `object[]` | Source card rendering |
+
+**Full Schema:**
 
 ```javascript
 allCampaigns: {
   "campaign-id": {
-    id, title, date, status, summary, keywords, sources,
-    agencies: { "agency-id": { name, fullName, description, email, portal, address, requests } },
-    complaints: { "complaint-id": { name, description, email, portal, address, subject, allegations, actions } },
-    congress: { subject, background, concerns, actions }
+    // Required (strings)
+    id: "campaign-id",           // Must match the key
+    title: "Case Title",
+    date: "YYYY-MM-DD",
+    status: "active",            // "active" shows green dot
+    summary: "Brief description",
+
+    // Optional
+    image: "images/photo.jpg",   // Case photo
+    keywords: ["array", "of", "search", "terms"],
+    sources: [{ name: "Source Name", url: "https://..." }],
+
+    // FOIA requests (optional)
+    agencies: {
+      "agency-id": {
+        name: "SHORT",           // e.g., "DOJ", "FBI"
+        fullName: "Full Agency Name",
+        description: "Why this agency",
+        email: "email@agency.gov" | null,  // null = portal only
+        portal: "https://...",
+        address: "Multi-line\naddress",
+        requests: ["Request 1", "Request 2"]  // MUST BE ARRAY
+      }
+    },
+
+    // IG Complaints (optional)
+    complaints: {
+      "complaint-id": {
+        name: "Office Name",
+        description: "Brief description",
+        email: "email@oig.gov",
+        portal: "https://...",
+        address: "Multi-line\naddress",
+        subject: "Complaint subject line",
+        allegations: ["Allegation 1", "Allegation 2"],  // MUST BE ARRAY
+        actions: ["Requested action 1", "Action 2"]     // MUST BE ARRAY
+      }
+    },
+
+    // Congressional letter (optional)
+    congress: {
+      subject: "Letter subject",
+      background: ["Fact 1", "Fact 2"],   // MUST BE ARRAY
+      concerns: ["Concern 1", "Concern 2"], // MUST BE ARRAY
+      actions: ["Action 1", "Action 2"]    // MUST BE ARRAY
+    }
   }
 }
 ```
@@ -93,11 +155,28 @@ Use kebab-case: `renee-good`, `keith-porter`, `geraldo-lunas-campos`
 
 ## Adding New Campaigns
 
-Edit the `allCampaigns` object in `campaign.html`. Required fields:
-- `id`, `title`, `date`, `status`, `summary`
+1. Edit `campaigns.js` - add to `allCampaigns` object
+2. Edit `index.html` - add slimmed-down entry to `campaigns` object (for landing page)
 
-Optional fields:
-- `keywords`, `sources`, `agencies`, `complaints`, `congress`
+**Required fields:** `id`, `title`, `date`, `status`, `summary`
+
+**Optional fields:** `image`, `keywords`, `sources`, `agencies`, `complaints`, `congress`
+
+**Checklist when adding/editing:**
+- [ ] `id` matches the object key (kebab-case)
+- [ ] All list fields are arrays, not strings (see schema above)
+- [ ] Agency has either `email` or `portal` (or both)
+- [ ] Multi-line addresses use `\n` for line breaks
+- [ ] Sources have both `name` and `url`
+
+## Common Pitfalls
+
+| Mistake | Symptom | Fix |
+|---------|---------|-----|
+| `background: "string"` instead of `["array"]` | Template shows one character per line | Convert to array |
+| Missing campaign in `index.html` | Case doesn't appear on landing page | Add to both files |
+| `email: ""` instead of `email: null` | Empty mailto link shown | Use `null` for portal-only |
+| Forgetting `id` field | Campaign won't load | Add `id` matching the key |
 
 ## Important Notes
 
@@ -105,3 +184,4 @@ Optional fields:
 - **Privacy-first** - No tracking, no analytics, works offline
 - **Form fields** - Name and Email are required; address fields are optional
 - **Templates** - Plain text, ready for copy/paste or mailto links
+- **Two data locations** - Full data in `campaigns.js`, summary in `index.html`
