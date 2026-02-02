@@ -11,6 +11,12 @@ const allCampaigns = {
     "keywords": ["epstein", "bondi", "doj", "fbi", "coverup", "files", "sex trafficking", "trump", "blanche", "kash patel", "redactions"],
     "sources": [
       {"name": "Democracy Docket", "url": "https://www.democracydocket.com/opinion/for-trump-the-epstein-cover-up-beats-the-truth/"},
+      {"name": "Wikipedia: Epstein Files Transparency Act", "url": "https://en.wikipedia.org/wiki/Epstein_Files_Transparency_Act"},
+      {"name": "CBS News: 3 Million Documents Released", "url": "https://www.cbsnews.com/live-updates/epstein-files-released-doj-2026/"},
+      {"name": "NPR: DOJ Says It Met Obligations", "url": "https://www.npr.org/2026/01/30/nx-s1-5693904/epstein-files-doj-trump"},
+      {"name": "ABC News: Blanche Defends Release", "url": "https://abcnews.go.com/Politics/deputy-ag-defends-epstein-files-release-survivors-slam/story?id=129749781"},
+      {"name": "Congress.gov: H.R.4405", "url": "https://www.congress.gov/bill/119th-congress/house-bill/4405"},
+      {"name": "Rep. Summer Lee: Contempt Motion", "url": "https://summerlee.house.gov/newsroom/press-releases/rep-summer-lee-moves-to-hold-pam-bondi-in-contempt-for-failing-to-comply-with-subpoena-to-release-epstein-files"},
       {"name": "The Guardian", "url": "https://www.theguardian.com/us-news/pam-bondi"}
     ],
     "agencies": {
