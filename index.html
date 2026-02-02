@@ -662,6 +662,15 @@
   <script>
     // Embedded campaigns data (no server needed)
     const campaigns = {
+      "epstein-files-bondi": {
+        "id": "epstein-files-bondi",
+        "title": "Epstein Files — DOJ Coverup",
+        "date": "2026-02-01",
+        "status": "active",
+        "category": "DOJ",
+        "summary": "AG Pam Bondi demanded 'full Epstein files' in Feb 2025. Congress mandated release by Dec 19, 2025. As of Feb 2026, over 5.2 million documents remain unreleased—less than 1% disclosed. DOJ releases on Fridays to bury news.",
+        "keywords": ["epstein", "bondi", "doj", "fbi", "coverup", "files", "sex trafficking", "trump", "blanche", "kash patel", "redactions"]
+      },
       "alex-pretti": {
         "id": "alex-pretti",
         "title": "Alex Pretti — Border Patrol Shooting",
@@ -747,7 +756,7 @@
       Object.values(grouped).forEach(arr => arr.sort((a, b) => new Date(b.date) - new Date(a.date)));
 
       // Render grouped
-      const categoryOrder = ['ICE', 'FDA', 'FTC', 'HHS', 'Other'];
+      const categoryOrder = ['DOJ', 'ICE', 'CBP', 'FDA', 'FTC', 'HHS', 'Other'];
       const sortedCategories = Object.keys(grouped).sort((a, b) => {
         const ai = categoryOrder.indexOf(a);
         const bi = categoryOrder.indexOf(b);

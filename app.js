@@ -339,7 +339,7 @@ Re: Freedom of Information Act Request
 
 Dear FOIA Officer:
 
-Pursuant to the Freedom of Information Act (FOIA), 5 U.S.C. § 552, I respectfully request copies of the following records:
+Pursuant to the Freedom of Information Act (FOIA), 5 U.S.C. § 552 et seq., I respectfully request copies of the following records:
 
 ${agency.requests.map((r, i) => `${i + 1}. ${r}`).join('\n\n')}
 
@@ -351,13 +351,17 @@ FORMAT OF RECORDS
 
 I request that responsive records be provided in electronic format (PDF preferred). If records exist in multiple formats, please provide the most complete version.
 
+SEGREGABLE PORTIONS AND EXEMPTIONS
+
+If any portion of a responsive record is withheld, I expect the release of all segregable portions of otherwise exempt records. See Schiller v. NLRB, 964 F.2d 1205, 1209 (D.C. Cir. 1992). If it is your position that responsive records exist but that certain records or portions thereof are exempt from disclosure, please identify the records being withheld and cite the specific FOIA exemption claimed for each record or portion thereof.
+
 FEE CATEGORY AND WAIVER REQUEST
 
 ${feeCategory}
 
-I request a waiver of all fees pursuant to 5 U.S.C. § 552(a)(4)(A)(iii). Disclosure of the requested information is in the public interest because it is likely to contribute significantly to public understanding of the operations or activities of the government and is not primarily in my commercial interest.
+I request a waiver of all fees pursuant to 5 U.S.C. § 552(a)(4)(A)(iii) and 6 C.F.R. § 5.11(k). Disclosure of the requested information is in the public interest because it is likely to contribute significantly to public understanding of the operations or activities of the government and is not primarily in my commercial interest. The public has a recognized interest in government transparency, and the requested records will shed light on agency conduct affecting the public. See Jordan v. U.S. Dep't of Justice, 591 F.2d 753, 756 (D.C. Cir. 1978).
 
-If my fee waiver request is denied, I am willing to pay fees up to $25.00. Please contact me before incurring costs beyond this amount.
+If my fee waiver request is denied, I am willing to pay fees up to $25.00. Please contact me at the email address above before incurring costs beyond this amount.
 
 RECORD PRESERVATION AND FUTURE RELEASE
 
@@ -369,9 +373,11 @@ This request concerns a death involving federal agents. I hereby formally reques
 
 3. This FOIA request itself constitutes a federal record documenting that these records were formally requested as of the date above.
 
-EXPEDITED RESPONSE
+RESPONSE TIMELINE
 
-Given the request for expedited processing above, I expect a response within 10 business days as required by 5 U.S.C. § 552(a)(6)(E)(ii). If expedited processing is denied, I expect a response within the standard 20 business days per 5 U.S.C. § 552(a)(6)(A)(i). If you deny any part of this request, please cite each specific exemption and explain how it applies. Please also inform me of appeal procedures available under the law.
+Given the request for expedited processing above, I expect a response within 10 business days as required by 5 U.S.C. § 552(a)(6)(E)(ii). If expedited processing is denied, I expect a response within the standard 20 business days per 5 U.S.C. § 552(a)(6)(A)(i).
+
+If you deny any part of this request, please cite each specific exemption, explain how it applies to each withheld record or portion, and inform me of appeal procedures available under the law.
 
 Thank you for your prompt attention to this request.
 
